@@ -1,3 +1,7 @@
+/* * * * * * * * * * * * * * *
+ * Created By Michael Marolt *
+ * * * * * * * * * * * * * * */
+
 'use strict';
 
 const fs = require('fs');

@@ -1,3 +1,6 @@
+/* * * * * * * * * * * * * * *
+ * Created By Michael Marolt *
+ * * * * * * * * * * * * * * */
 "use strict"
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {

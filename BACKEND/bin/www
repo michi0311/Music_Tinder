@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+/* * * * * * * * * * * * * * *
+ * Created By Michael Marolt *
+ * * * * * * * * * * * * * * */
+
 /**
  * Module dependencies.
  */

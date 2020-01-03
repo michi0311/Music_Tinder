@@ -1,3 +1,7 @@
+/* * * * * * * * * * * * * * *
+ * Created By Michael Marolt *
+ * * * * * * * * * * * * * * */
+
 /**
  * hashTools.js
  * 

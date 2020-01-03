@@ -3,7 +3,8 @@
  * * * * * * * * * * * * * * */
 const user = require('../models/index').User;
 const hashTool = require("../helpers/hashTool");
-const validator = require("validator")
+const validator = require("validator");
+
 
 module.exports = {
     async create (req,res) {
@@ -33,7 +34,7 @@ module.exports = {
 
         } catch (e) {
             console.log(e);
-            res.status(500).send(e)
+            res.status(500).send(e.fields)
         }
     },
 
@@ -48,6 +49,25 @@ module.exports = {
         catch (e) {
             console.log(e);
             res.status(500).send(e);
+        }
+    },
+
+    async getRandomUser (req,res) {
+        try {
+            const UidCollection = await user.findAll({attributes: ["id"]});
+            let id = Math.floor(Math.random() * UidCollection.length)
+            let UID = UidCollection[id];
+            let userCollection = await user.findByPk(parseInt(UID["id"]));
+            
+            if (!userCollection) {
+                return res.status(400).send({ error: 'User creation unsuccesfull' })
+            } else {
+                delete userCollection.dataValues["password"]
+                res.status(200).send({ user: userCollection });
+            };
+        } catch (e) {
+            console.log(e);
+            res.status(500).send(e)
         }
     },
 
@@ -71,6 +91,9 @@ module.exports = {
         try {
             // TODO only a User can update itself
             const _id = req.params.id;
+            if (_id != req.user.id) {
+                return res.status(401).send({error: "Not allowed to change another user"})
+            }
             const updates = Object.keys(req.body);
             const allowedUpdates = ["name", "email", "password", "birthday", "password"];
             const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
@@ -105,6 +128,9 @@ module.exports = {
     async deleteUser (req,res) {
         try {
             const _id = req.params.id;
+            if (_id != req.user.id) {
+                return res.status(401).send({error: "Not allowed to delete another user"})
+            }
             const userCollection = await user.findByPk(parseInt(_id));
             // TODO only a User can delete itself
 
