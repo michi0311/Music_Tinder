@@ -13,6 +13,18 @@ var songRouter = require(path.normalize('../BACKEND/src/routes/song'))
 
 var app = express();
 
+// Allows Cross Origin Requests w Chrome
+app.all("/api/*", function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With"
+    ); //TODO modify "Access-Control-Allow-Headers"
+    res.header("Access-Control-Allow-Methods", "GET, PATCH, POST, DELETE");
+    return next();
+  });
+  
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
