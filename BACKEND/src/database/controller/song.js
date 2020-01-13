@@ -13,6 +13,7 @@ const request = require("request")
 
 module.exports = {
     async create (req,res) {
+        console.log(req.body);
         try {
             if (validator.isEmpty(req.body.songName || "")) {
                 return res.status(400).send({ error: "No Song Name provided" })
