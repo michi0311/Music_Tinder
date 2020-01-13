@@ -1,11 +1,15 @@
 <input #search (keyup)="searchSongs(search.value)" ng-model="searchText" placeholder="enter search term here">
-<ul>
-  <li *ngFor="let result of results.results">
-    <p>{{result.trackName}}</p>
-    <p>{{result.artistName}}</p>
-    <img src={{result.artworkUrl30}}>
-    <button (click)="addSong(result)">
-      add
-    </button>
-  </li>
-</ul>
+
+
+<mat-list>
+  <mat-list-item *ngFor="let result of results.results">
+    <img matListAvatar src={{result.artworkUrl60}}>
+    <h3 matLine> {{result.trackName}} </h3>
+    <p matLine>
+      <span> {{result.artistName}} </span>
+      <span class="demo-2"> -- {{result.collectionName}} </span>
+    </p>
+    <button (click)="addSong(result)">add</button>
+  </mat-list-item>
+</mat-list>x
+

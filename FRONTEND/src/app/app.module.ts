@@ -9,6 +9,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { SongSearchComponent } from './profile/music/song-search/song-search.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatListModule} from '@angular/material/list';
+import {MatButton, MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     FormsModule,
     MatSnackBarModule,
     RouterModule.forRoot([
-      { path: 'song-list', component: SongListComponent },
+      {path: 'song-list', component: SongListComponent},
       {path: 'song-search', component: SongSearchComponent}
-    ])
+    ]),
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

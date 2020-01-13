@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MusicServiceService} from '../music-service.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-song-search',
