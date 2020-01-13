@@ -5,14 +5,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var cors = require('cors');
 var loginRouter = require(path.normalize('../BACKEND/src/routes/login'));
 var usersRouter = require(path.normalize('../BACKEND/src/routes/user'));
 var matchRouter = require(path.normalize('../BACKEND/src/routes/userMatch'));
 var songRouter = require(path.normalize('../BACKEND/src/routes/song'))
 
 var app = express();
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
