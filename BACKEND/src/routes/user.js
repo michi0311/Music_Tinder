@@ -3,8 +3,9 @@
  * * * * * * * * * * * * * * */
 var express = require('express');
 var router = express.Router();
-const userController = require('../database/controller/user.js');
-const passport = require("./config/passport");
+const path = require("path")
+const userController = require(path.normalize('../database/controller/user.js'));
+const passport = require(path.normalize("../routes/config/passport"));
 
 /* GET users listing. */
 router.post('/',userController.create);

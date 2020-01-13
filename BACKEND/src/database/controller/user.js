@@ -1,8 +1,9 @@
 /* * * * * * * * * * * * * * *
  * Created By Michael Marolt *
  * * * * * * * * * * * * * * */
+const path = require("path")
 const user = require('../models/index').User;
-const hashTool = require("../helpers/hashTool");
+const hashTool = require(path.normalize("../helpers/hashTool"));
 const validator = require("validator");
 
 

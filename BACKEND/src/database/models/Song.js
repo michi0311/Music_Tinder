@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
         iTunesID: {
             type: DataTypes.INTEGER(12),
         },
+        genre: {
+            type: DataTypes.STRING(20)
+        },
         totalLikes: {
             type: DataTypes.INTEGER(10),
         },

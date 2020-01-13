@@ -1,7 +1,8 @@
 /* * * * * * * * * * * * * * *
  * Created By Michael Marolt *
  * * * * * * * * * * * * * * */
-const userMatch = require('../models/index').UserMatch;
+const path = require("path")
+const userMatch = require(path.normalize('../models/index')).UserMatch;
 
 module.exports = {
     async like (req,res) {

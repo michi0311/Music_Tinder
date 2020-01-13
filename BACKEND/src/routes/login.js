@@ -3,11 +3,12 @@
  * * * * * * * * * * * * * * */
 var express = require('express');
 var router = express.Router();
-const user = require("../database/models/index").User;
-const hashTool = require("../database/helpers/hashTool");
+const path = require("path")
+const user = require(path.normalize("../database/models/index")).User;
+const hashTool = require(path.normalize("../database/helpers/hashTool"));
 
 //import Passport and the jwt module
-const passport = require("./config/passport");
+const passport = require(path.normalize(__dirname + "/config/passport"));
 const jwt = require("jsonwebtoken");
 
 const jwtSecret = "Music Tinder";

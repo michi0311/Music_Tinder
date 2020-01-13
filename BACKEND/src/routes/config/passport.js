@@ -2,8 +2,9 @@ const passport = require('passport');
 const passportJWT = require('passport-jwt');
 const jwt = require('jsonwebtoken');
 const JWTSECRET = "Music Tinder";
+const path = require("path")
 
-const user = require("../../database/models/index").User;
+const user = require(path.normalize("../../database/models/index")).User;
 
 let extractJWT = passportJWT.ExtractJwt;
 let JWTStrategy = passportJWT.Strategy;

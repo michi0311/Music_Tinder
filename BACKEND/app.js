@@ -6,10 +6,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var loginRouter = require('./src/routes/login');
-var usersRouter = require('./src/routes/user');
-var matchRouter = require('./src/routes/userMatch');
-var songRouter = require('./src/routes/song')
+var loginRouter = require(path.normalize('../BACKEND/src/routes/login'));
+var usersRouter = require(path.normalize('../BACKEND/src/routes/user'));
+var matchRouter = require(path.normalize('../BACKEND/src/routes/userMatch'));
+var songRouter = require(path.normalize('../BACKEND/src/routes/song'))
 
 var app = express();
 
