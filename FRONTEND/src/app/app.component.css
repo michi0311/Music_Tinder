@@ -1,7 +1,10 @@
 /* AppComponent's private CSS styles */
+body {
+  /* padding or margin don't work */
+}
+
 h1 {
-  font-size: 1.2em;
-  margin-bottom: 0;
+  color: #336b81;
 }
 h2 {
   font-size: 2em;
@@ -12,17 +15,18 @@ nav a {
   padding: 5px 10px;
   text-decoration: none;
   margin-top: 10px;
+  margin-right: 10px;
   display: inline-block;
   background-color: #eee;
   border-radius: 4px;
+  color: black;
 }
-nav a:visited, a:link {
-  color: #334953;
-}
+
 nav a:hover {
-  color: #039be5;
-  background-color: #cfd8dc;
+  color: #336b81;
+  background-color: #e0e0dc;
 }
 nav a.active {
-  color: #039be5;
+  color: #336b81;
+  background-color: #cecece;
 }

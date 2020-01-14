@@ -11,10 +11,9 @@ import { IonicModule } from '@ionic/angular';
 import {MatButton, MatButtonModule} from '@angular/material/button';
 
 //Components
-import { AppComponent } from './app.component';
 import { SongListComponent } from './profile/music/song-list/song-list.component';
 import { SongSearchComponent } from './profile/music/song-search/song-search.component';
-
+import { AppComponent } from './app.component';
 //Models
 import { AppRoutingModule } from './app-routing.module';
 import { SongSwipingComponent } from './song-swiping/song-swiping.component';
