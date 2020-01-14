@@ -11,6 +11,7 @@ import { SongSearchComponent } from './profile/music/song-search/song-search.com
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
 import {MatButton, MatButtonModule} from '@angular/material/button';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import {MatButton, MatButtonModule} from '@angular/material/button';
     MatButtonModule,
     BrowserAnimationsModule,
     FormsModule,
+    IonicModule,
     MatSnackBarModule,
     RouterModule.forRoot([
       {path: 'song-list', component: SongListComponent},
       {path: 'song-search', component: SongSearchComponent}
     ]),
-    MatListModule
+    MatListModule,
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
