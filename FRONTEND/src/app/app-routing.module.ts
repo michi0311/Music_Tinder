@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //Import all Components, which should get routed
-import { CommonModule } from '@angular/common';
 import { SongListComponent } from "./profile/music/song-list/song-list.component";
 import { SongSearchComponent } from "./profile/music/song-search/song-search.component";
-import {MusicServiceService} from "./profile/music/music-service.service";
-
+import {SongSwipingComponent} from "./song-swiping/song-swiping.component";
 
 
 const routes: Routes = [
@@ -15,13 +13,12 @@ const routes: Routes = [
   { path: 'song-list', component: SongListComponent },
   { path: 'song-search', component: SongSearchComponent },
   //TODO Kathi: Add Routes für Swiping and Matching Screen, or Chatting or other
+  { path: 'song-swipe', component: SongSwipingComponent}
+
 ];
 
-
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

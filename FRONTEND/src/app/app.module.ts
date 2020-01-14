@@ -1,24 +1,30 @@
+//Modules from angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { SongListComponent } from './profile/music/song-list/song-list.component';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
-import { SongSearchComponent } from './profile/music/song-search/song-search.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
-import {MatButton, MatButtonModule} from '@angular/material/button';
 import { IonicModule } from '@ionic/angular';
+import {MatButton, MatButtonModule} from '@angular/material/button';
+
+//Components
+import { AppComponent } from './app.component';
+import { SongListComponent } from './profile/music/song-list/song-list.component';
+import { SongSearchComponent } from './profile/music/song-search/song-search.component';
+
+//Models
 import { AppRoutingModule } from './app-routing.module';
+import { SongSwipingComponent } from './song-swiping/song-swiping.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SongListComponent,
-    SongSearchComponent
+    SongSearchComponent,
+    SongSwipingComponent
   ],
   imports: [
     BrowserModule,
@@ -28,10 +34,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     IonicModule,
     MatSnackBarModule,
-    RouterModule.forRoot([
-      {path: 'song-list', component: SongListComponent},
-      {path: 'song-search', component: SongSearchComponent}
-    ]),
+    RouterModule, //KB: Exported Routing (app-routing.module.ts)
     MatListModule,
     IonicModule.forRoot(),
     AppRoutingModule
