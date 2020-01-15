@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
+
 @Component({
   selector: 'app-song-swiping',
   templateUrl: './song-swiping.component.html',
