@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 //Models
 import { AppRoutingModule } from './app-routing.module';
 import { SongSwipingComponent } from './song-swiping/song-swiping.component';
+import {RouterTestingModule} from "@angular/router/testing";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SongSwipingComponent } from './song-swiping/song-swiping.component';
     IonicModule,
     MatSnackBarModule,
     IonicModule.forRoot(),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
