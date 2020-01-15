@@ -1,41 +1,27 @@
-<h1>Swipe Your Song here!</h1>
-
-<div class="flexButton">
-  <ion-button shape="round" color="warning" (click)="repeatSong()"> WH </ion-button>
-  <ion-button shape="round" color="warning" (click)="repeatSong()"> WH </ion-button>
-  <ion-button shape="round" color="warning" (click)="repeatSong()"> WH </ion-button>
-  <ion-button shape="round" color="warning" (click)="repeatSong()"> WH </ion-button>
-  <ion-button shape="round" color="warning" (click)="repeatSong()"> WH </ion-button>
-  <button class="myButton Hate" (click)="hateSong()"> X </button>
-  <button class="myButton Save" (click)="saveSong()"> S </button>
-  <button class="myButton Love" (click)="loveSong()"> <3 </button>
-  <button class="myButton Info" (click)="infoSong()"> I </button>
-</div>
-
 
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="schedule">
+    <ion-tab-button tab="repeat" (click)="repeatSong()">
       <ion-icon name="refresh"></ion-icon>
       <ion-label>Repeat</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="speakers">
+    <ion-tab-button tab="hate" (click)="hateSong()">
       <ion-icon name="close-circle"></ion-icon>
       <ion-label>Hate</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="map">
+    <ion-tab-button tab="save" (click)="saveSong()">
       <ion-icon name="star-outline"></ion-icon>
       <ion-label>Save</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="about">
+    <ion-tab-button tab="love" (click)="loveSong()">
       <ion-icon name="heart"></ion-icon>
       <ion-label>Love</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="about">
+    <ion-tab-button tab="info" (click)="infoSong()">
       <ion-icon name="musical-note"></ion-icon>
       <ion-label>Info</ion-label>
     </ion-tab-button>

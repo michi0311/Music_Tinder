@@ -4,13 +4,11 @@ body {
 }
 
 h1 {
-  color: #336b81;
+  color: #3880ff;
+  padding-top: 25px;
+  padding-left: 120px;
 }
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
-}
+
 nav a {
   padding: 5px 10px;
   text-decoration: none;
@@ -30,3 +28,8 @@ nav a.active {
   color: #336b81;
   background-color: #cecece;
 }
+
+ion-fab {
+  padding: 20px;
+}
+

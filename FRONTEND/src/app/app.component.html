@@ -1,14 +1,32 @@
 
-<h1 class="title">Angular Router</h1>
+<h1 class="title">Musictinder - Find your perfect Listener</h1>
+
+<!-- fab placed to the top start -->
+<ion-fab vertical="top" horizontal="start" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list>
+    <ion-fab-button color="light">
+      <a routerLink="/song-list" routerLinkActive="active"><ion-icon name="logo-facebook"></ion-icon></a>
+
+    </ion-fab-button>
+    <ion-fab-button color="light">
+      <a routerLink="/song-search" routerLinkActive="active"><ion-icon name="logo-twitter"></ion-icon></a>
+    </ion-fab-button>
+    <ion-fab-button color="light">
+      <a routerLink="/song-swipe" routerLinkActive="active"><ion-icon name="logo-vimeo"></ion-icon></a>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+
 <nav>
-  <a routerLink="/song-list" routerLinkActive="active">SongList</a>
 
-  <a routerLink="/song-search" routerLinkActive="active">SongSearch</a>
 
-  <a routerLink="/song-swipe" routerLinkActive="active">SongSwipe</a>
+
+
 
 </nav>
-
 
 <router-outlet></router-outlet>
 
