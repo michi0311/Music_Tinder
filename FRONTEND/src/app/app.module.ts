@@ -9,6 +9,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
 import { IonicModule } from '@ionic/angular';
 import {MatButton, MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 //Components
 import { SongListComponent } from './profile/music/song-list/song-list.component';
@@ -34,10 +35,7 @@ import { SongSwipingComponent } from './song-swiping/song-swiping.component';
     FormsModule,
     IonicModule,
     MatSnackBarModule,
-    RouterModule, //KB: Exported Routing (app-routing.module.ts)
-    MatListModule,
     IonicModule.forRoot(),
-    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
