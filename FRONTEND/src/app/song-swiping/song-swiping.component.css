@@ -1,0 +1,39 @@
+/* Responsive Design - Buttons bei Computer */
+.flexButton { /*flexbox for Buttons*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+
+}
+.myButton {
+  box-shadow: 3px 3px 5px -2px #276873;
+  background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color:#599bb3;
+  border-radius:37px;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:18px;
+  font-weight:bold;
+  padding:10px 10px;
+  text-decoration:none;}
+
+.myButton:hover {
+  background:#599bb3 100%;
+  background-color:#408c99;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+
+/* Responsive Design - Swipefunktion bei Handy */
+@media screen and (max-width: 800px) {
+  .left, .main, .right {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+
