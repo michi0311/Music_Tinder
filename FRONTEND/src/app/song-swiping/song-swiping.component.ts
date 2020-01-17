@@ -11,6 +11,7 @@ export class SongSwipingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
   repeatSong(): void {
   alert("You repeat the Song (not working)")
