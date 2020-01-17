@@ -44,3 +44,13 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Howler - for Audio
+/howler.js-master
+
+# Package und Package Lock (not sure)
+package-lock.json
+package.json
+
+#pics from Cordova
+/resources

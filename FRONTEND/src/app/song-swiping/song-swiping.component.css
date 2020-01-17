@@ -1,11 +1,8 @@
-/* Responsive Design - Buttons bei Computer */
-.flexButton { /*flexbox for Buttons*/
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-
-
+div {
+  padding-bottom: 80px;
 }
+
+
 .myButton {
   box-shadow: 3px 3px 5px -2px #276873;
   background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
@@ -28,6 +25,7 @@
   position:relative;
   top:1px;
 }
+
 
 
 /* Responsive Design - Swipefunktion bei Handy */

@@ -15,18 +15,19 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import { SongListComponent } from './profile/music/song-list/song-list.component';
 import { SongSearchComponent } from './profile/music/song-search/song-search.component';
 import { AppComponent } from './app.component';
+import { SongSwipingComponent } from './song-swiping/song-swiping.component';
 
 //Models
 import { AppRoutingModule } from './app-routing.module';
-import { SongSwipingComponent } from './song-swiping/song-swiping.component';
 import {RouterTestingModule} from "@angular/router/testing";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SongListComponent,
     SongSearchComponent,
-    SongSwipingComponent
+    SongSwipingComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import {Song} from './song';
 import {log} from 'util';
 import {SONGS} from './mock-songs';
@@ -12,7 +10,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class MusicServiceService {
   constructor(private http: HttpClient) { }
-   songs;
+   song;
 
  // @ts-ignore
   public  getSongs() {
@@ -24,6 +22,7 @@ export class MusicServiceService {
   public searchSongs(term: string) {
     return this.http.get('https://itunes.apple.com/search?term=' + term + '&entity=musicTrack&limit=20&attribute=songTerm');
   }
+  // @ts-ignore
   public addSong(song  ) {
     const songExport = new Song(1, song.trackName, song.previewUrl, song.trackId.toString(), song.primaryGenreName, 0, 0);
     log(songExport);
