@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
 import {Howl, Howler} from 'howler';
 import {SongSwipingService} from "./song-swiping.service";
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -10,10 +11,9 @@ import {SongSwipingService} from "./song-swiping.service";
 })
 export class SongSwipingComponent implements OnInit {
   public currentUser;
-
   public audio;
   public isPlaying = false;
-  constructor(private songService: SongSwipingService) {
+  constructor(private songService: SongSwipingService, public toastCtrl: ToastController) {
 
   }
 
@@ -63,6 +63,7 @@ export class SongSwipingComponent implements OnInit {
 
   repeatSong(): void {
     this.audio.stop();
+    if (this.isPlaying==false) { this.changeButtonPlay()}
     this.audio.play();
     console.log("User called repeatSong()")
   }
@@ -70,7 +71,7 @@ export class SongSwipingComponent implements OnInit {
   //Switching to next Song - ngOnInit-Function gets called
   hateSong(): void {
     console.log("User called hateSong()");
-    if (this.audio.isPlaying==false) { this.changeButtonPlay()}
+    if (this.isPlaying==false) { this.changeButtonPlay()}
     this.audio.stop();
     this.ngOnInit()
   }
@@ -95,5 +96,25 @@ export class SongSwipingComponent implements OnInit {
   changeButtonPlay() : void {
     document.getElementById("Pause/Play").innerHTML = "Pause";
     document.getElementById("Pause/PlayIcon").setAttribute("name", "pause")
+  }
+
+  async openToast() {
+    const toast = await this.toastCtrl.create({
+      header: 'Warum ist es mein Lieblingssong?',
+      message: 'Ich habe dieses Lied bei meiner ersten Hochzeit gehört, seitdem erinnert es mich immer an die schöne Zeit, als ich mich endlich scheiden ließ! <3',
+      buttons: [
+        {
+          text: 'Back',
+          role: 'cancel',
+          handler: () => {
+            console.log('Closed Infotoast');
+          }}
+
+          ],
+      color: "primary",
+      position: "middle",
+
+    });
+    toast.present();
   }
 }

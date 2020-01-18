@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'song-list', component: SongListComponent },
   { path: 'song-search', component: SongSearchComponent },
   //TODO Kathi: Add Routes für Swiping and Matching Screen, or Chatting or other
-  { path: 'song-swipe', component: SongSwipingComponent}
+  { path: 'song-swipe', component: SongSwipingComponent},
 
 ];
 
