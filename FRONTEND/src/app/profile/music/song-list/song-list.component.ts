@@ -7,6 +7,7 @@ import {MusicServiceService} from '../music-service.service';
 // tslint:disable-next-line:import-spacing
 import {Song} from '../song';
 import {log} from 'util';
+import {ITunesWebApi} from '../i-tunes-web-api';
 
 @Component({
   selector: 'app-song-list',
@@ -26,7 +27,7 @@ public songs;
   getSongs() {
     this.musicService.getSongs()
       .subscribe(
-      data => {
+        data => {
         console.log(data);
         this.songs = data; } ,
       err => console.error(err),

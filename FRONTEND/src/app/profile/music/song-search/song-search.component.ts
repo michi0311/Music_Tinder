@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MusicServiceService} from '../music-service.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatButtonModule} from '@angular/material/button';
-import {ToastController} from "@ionic/angular";
-import {MessageUtil} from "../../../message-util";
+import {ToastController} from '@ionic/angular';
+import {MessageUtil} from '../../../message-util';
+import {ITunesWebApi} from '../i-tunes-web-api';
 
 @Component({
   selector: 'app-song-search',
@@ -11,7 +12,7 @@ import {MessageUtil} from "../../../message-util";
   styleUrls: ['./song-search.component.css']
 })
 export class SongSearchComponent implements OnInit {
-  results;
+  results: ITunesWebApi;
   constructor(private musicService: MusicServiceService, private snackBar: MatSnackBar, private toastController: ToastController) { }
 
   ngOnInit() {
@@ -19,11 +20,11 @@ export class SongSearchComponent implements OnInit {
   searchSongs(term: string) {
     this.musicService.searchSongs(term)
       .subscribe(
-        data => {
+        ( data: ITunesWebApi ) => {
           console.log(data);
 
-          const res = data;
-          this.results = res; } ,
+
+          this.results = data; } ,
         err => console.error(err),
         () => console.log('done loading foods')
       );
@@ -31,7 +32,7 @@ export class SongSearchComponent implements OnInit {
   addSong(result) {
     this.musicService.addSong(result)
       .subscribe(
-        async data => {
+        async  data => {
           MessageUtil.showMessage('set song'); } ,
         err => console.error(err),
         () => console.log('done loading foods')
