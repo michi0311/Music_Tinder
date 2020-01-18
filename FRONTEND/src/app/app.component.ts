@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {IonMenu} from "@ionic/angular";
 
 
 @Component({
@@ -12,12 +13,14 @@ export class AppComponent {
   constructor() {}
 
 public openMenu() {
-    document.querySelector('#menu')
+    // @ts-ignore
+  (document.querySelector('#menu') as HTMLIonMenuElement )
       .open();
   }
 
   public closeMenu() {
-    document.querySelector('#menu')
+
+    (document.querySelector('#menu') as HTMLIonMenuElement)
       .close();
   }
 }
