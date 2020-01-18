@@ -33,25 +33,29 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <a routerLink="/song-list" routerLinkActive="active" (click)="closeMenu()">
-          <ion-item>
-          <ion-icon name="home" slot="start"></ion-icon>
-          <ion-label>SongList</ion-label>
-          </ion-item></a>
+
         <a routerLink="/song-swipe" routerLinkActive="active" (click)="closeMenu()">
         <ion-item>
-          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-icon name="heart-half" slot="start"></ion-icon>
           <ion-label>SongSwipe</ion-label>
         </ion-item></a>
-        <a routerLink="/song-search" routerLinkActive="active" (click)="closeMenu()">
+        <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">
         <ion-item>
           <ion-icon name="chatbubbles" slot="start"></ion-icon>
-          <ion-label>SongSearch</ion-label>
+          <ion-label>My matches</ion-label>
+          <ion-badge slot="end" color="primary">22</ion-badge>
         </ion-item></a>
+        <a routerLink="/song-list" routerLinkActive="active" (click)="closeMenu()">
+        <ion-item>
+          <ion-icon name="musical-note" slot="start"></ion-icon>
+          <ion-label>Music I like</ion-label>
+          <ion-badge slot="end" color="secondary">134</ion-badge>
+        </ion-item></a>
+        <a routerLink="/settings" routerLinkActive="active" (click)="closeMenu()">
         <ion-item>
           <ion-icon name="settings" slot="start"></ion-icon>
           <ion-label>Settings</ion-label>
-        </ion-item>
+        </ion-item></a>
       </ion-list>
     </ion-content>
   </ion-menu>
