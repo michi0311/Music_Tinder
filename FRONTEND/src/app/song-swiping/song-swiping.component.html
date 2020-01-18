@@ -13,14 +13,14 @@
       <ion-label id="Pause/Play">Pause</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="repeatSong()">
-      <ion-icon size="large" name="refresh"></ion-icon>
-      <ion-label>Repeat</ion-label>
-    </ion-tab-button>
-
     <ion-tab-button (click)="hateSong()">
       <ion-icon size="large" name="close-circle" color=""></ion-icon>
       <ion-label>Hate</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="infoSong()">
+      <ion-icon size="large" name="musical-note"></ion-icon>
+      <ion-label>Info</ion-label>
     </ion-tab-button>
 
     <ion-tab-button (click)="loveSong()">
@@ -28,10 +28,11 @@
       <ion-label>Love</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="infoSong()">
-      <ion-icon size="large" name="musical-note"></ion-icon>
-      <ion-label>Info</ion-label>
+    <ion-tab-button (click)="repeatSong()">
+      <ion-icon size="large" name="refresh"></ion-icon>
+      <ion-label>Repeat</ion-label>
     </ion-tab-button>
+
   </ion-tab-bar>
 </ion-tabs>
 

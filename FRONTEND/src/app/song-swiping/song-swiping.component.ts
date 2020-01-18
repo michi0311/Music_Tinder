@@ -2,6 +2,8 @@ import {Component, OnInit, Input, Output} from '@angular/core';
 import {MusicServiceService} from '../profile/music/music-service.service';
 import {ActivatedRoute} from "@angular/router";
 import {Howl, Howler} from 'howler';
+import {timestamp} from "rxjs/operators";
+import {not} from "rxjs/internal-compatibility";
 
 @Component({
   selector: 'app-song-swiping',
@@ -35,7 +37,8 @@ export class SongSwipingComponent implements OnInit {
             src: ['https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview62/v4/0e/36/44/0e3644c8-fc1e-9a80-e1df-05476d5d02f4/mzaf_552550923465582745.plus.aac.p.m4a']
           });
 
-          this.audio.play();
+          this.audioId= this.audio.play();
+          this.changeButtonPlay();
           this.isPlaying = true;
         },
         err => console.error(err),
@@ -49,37 +52,50 @@ export class SongSwipingComponent implements OnInit {
     if (this.isPlaying) {
       this.audio.pause();
       this.isPlaying = false;
-      document.getElementById("Pause/Play").innerHTML = "Play";
-      document.getElementById("Pause/PlayIcon").setAttribute("name", "play")
-    }
+      this.changeButtonPause()
+
+      }
     else {
       this.audio.play();
       this.isPlaying = true;
-      document.getElementById("Pause/Play").innerHTML = "Pause";
-      document.getElementById("Pause/PlayIcon").setAttribute("name", "pause")
+      this.changeButtonPlay()
     }
-
+    console.log("User called pause/playSong()")
   }
 
   repeatSong(): void {
     this.audio.stop();
     this.audio.play();
+    console.log("User called repeatSong()")
   }
 
+  //Switching to next Song - ngOnInit-Function gets called
   hateSong(): void {
-    alert("You hate the Song (not working)")
+    console.log("User called hateSong()");
+    if (this.audio.isPlaying==false) { this.changeButtonPlay()}
+    this.audio.stop();
+    this.ngOnInit()
   }
 
   saveSong(): void {
-    alert("You saved the Song (not working)")
+    console.log("User called saveSong(NotWorking)")
   }
 
   loveSong(): void {
-    alert("You love the Song (not working)")
+    console.log("User called loveSong(NotWorking)")
   }
 
   infoSong(): void {
-    alert("You get more informations about the Song (not working)")
+    console.log("User called infoSong(NotWorking)")
   }
 
+  changeButtonPause(): void{
+    document.getElementById("Pause/Play").innerHTML = "Play";
+    document.getElementById("Pause/PlayIcon").setAttribute("name", "play")
+  }
+
+  changeButtonPlay() : void {
+    document.getElementById("Pause/Play").innerHTML = "Pause";
+    document.getElementById("Pause/PlayIcon").setAttribute("name", "pause")
+  }
 }
