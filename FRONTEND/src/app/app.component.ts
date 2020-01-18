@@ -9,5 +9,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'FRONTEND';
+  constructor() {}
 
+public openMenu() {
+    document.querySelector('#menu')
+      .open();
+  }
+
+  public closeMenu() {
+    document.querySelector('#menu')
+      .close();
+  }
 }

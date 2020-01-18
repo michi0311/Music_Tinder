@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MusicServiceService} from '../music-service.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatButtonModule} from '@angular/material/button';
+import {ToastController} from "@ionic/angular";
+import {MessageUtil} from "../../../message-util";
 
 @Component({
   selector: 'app-song-search',
@@ -10,7 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class SongSearchComponent implements OnInit {
   results;
-  constructor(private musicService: MusicServiceService, private snackBar: MatSnackBar) { }
+  constructor(private musicService: MusicServiceService, private snackBar: MatSnackBar, private toastController: ToastController) { }
 
   ngOnInit() {
   }
@@ -29,10 +31,8 @@ export class SongSearchComponent implements OnInit {
   addSong(result) {
     this.musicService.addSong(result)
       .subscribe(
-        data => {
-          this.snackBar.open('added Song: ' + result.trackName , 'OK', {
-            duration: 2000,
-          }); } ,
+        async data => {
+          MessageUtil.showMessage('set song'); } ,
         err => console.error(err),
         () => console.log('done loading foods')
       );
