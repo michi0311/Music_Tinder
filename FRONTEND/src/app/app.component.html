@@ -1,32 +1,70 @@
 
-<h1 class="title">Musictinder - Find your perfect (Music)lover</h1>
+<h1 class="title">Musictinder - Find your perfect Listener</h1>
 <ion-app>
-  <!-- fab placed to the top start -->
-  <ion-fab vertical="top" horizontal="start" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="heart"></ion-icon>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Music Tinder</ion-title>
+  </ion-toolbar>
+<!-- fab placed to the top start -->
+<!---<ion-fab vertical="top" horizontal="start" slot="fixed">
+ <ion-fab-button>
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list>
+    <ion-fab-button color="light">
+      <a routerLink="/song-list" routerLinkActive="active"><ion-icon name="logo-facebook"></ion-icon></a>
+
     </ion-fab-button>
-    <ion-fab-list>
-      <a routerLink="/song-list" routerLinkActive="active">
-        <ion-fab-button color="light">
-          <ion-icon size="large" name="musical-note">
-          </ion-icon>
-        </ion-fab-button></a>
-      <a routerLink="/song-search" routerLinkActive="active">
-        <ion-fab-button color="light">
-          <ion-icon size="large" name="musical-notes"></ion-icon>
-        </ion-fab-button>
-      </a>
-      <a routerLink="/song-swipe" routerLinkActive="active">
-        <ion-fab-button color="light">
-          <ion-icon size="large" name="heart"></ion-icon>
-        </ion-fab-button>
-      </a>
-    </ion-fab-list>
-  </ion-fab>
+    <ion-fab-button color="light">
+      <a routerLink="/song-search" routerLinkActive="active"><ion-icon name="logo-twitter"></ion-icon></a>
+    </ion-fab-button>
+    <ion-fab-button color="light">
+      <a routerLink="/song-swipe" routerLinkActive="active"><ion-icon name="logo-vimeo"></ion-icon></a>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>-->
+  <ion-menu side="start" id="menu">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <a routerLink="/song-list" routerLinkActive="active" (click)="closeMenu()">
+          <ion-item>
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label>SongList</ion-label>
+          </ion-item></a>
+        <a routerLink="/song-swipe" routerLinkActive="active" (click)="closeMenu()">
+        <ion-item>
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label>SongSwipe</ion-label>
+        </ion-item></a>
+        <a routerLink="/song-search" routerLinkActive="active" (click)="closeMenu()">
+        <ion-item>
+          <ion-icon name="chatbubbles" slot="start"></ion-icon>
+          <ion-label>SongSearch</ion-label>
+        </ion-item></a>
+        <ion-item>
+          <ion-icon name="settings" slot="start"></ion-icon>
+          <ion-label>Settings</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+<nav>
 
 
-<router-outlet></router-outlet>
+
+
+
+</nav>
+<ion-content>
+<router-outlet main></router-outlet>
+</ion-content>
 </ion-app>
 
 
