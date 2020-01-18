@@ -7,6 +7,7 @@ import {MusicServiceService} from '../music-service.service';
 // tslint:disable-next-line:import-spacing
 import {Song} from '../song';
 import {log} from 'util';
+import {ITunesWebApi} from '../i-tunes-web-api';
 
 @Component({
   selector: 'app-song-list',
@@ -20,18 +21,18 @@ public songs;
   }
 
   ngOnInit() {
-  this.getSongs();
-}
+    this.getSongs();
+  }
 
-getSongs() {
-  this.musicService.getSongs()
-    .subscribe(
-      data => {
+  getSongs() {
+    this.musicService.getSongs()
+      .subscribe(
+        data => {
         console.log(data);
         this.songs = data; } ,
       err => console.error(err),
       () => console.log('done loading foods')
     );
-}
+  }
 
 }
