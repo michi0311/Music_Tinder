@@ -1,9 +1,7 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
-import {MusicServiceService} from '../profile/music/music-service.service';
-import {ActivatedRoute} from "@angular/router";
 import {Howl, Howler} from 'howler';
-import {timestamp} from "rxjs/operators";
-import {not} from "rxjs/internal-compatibility";
+import {SongSwipingService} from "./song-swiping.service";
+
 
 @Component({
   selector: 'app-song-swiping',
@@ -11,13 +9,15 @@ import {not} from "rxjs/internal-compatibility";
   styleUrls: ['./song-swiping.component.css']
 })
 export class SongSwipingComponent implements OnInit {
-  public currentSong;
+  public currentUser;
 
   public audio;
   public isPlaying = false;
-  constructor(private musicService: MusicServiceService) {
+  constructor(private songService: SongSwipingService) {
 
   }
+
+  //TODO - Stop song when switching routes
 
   ngOnInit() {
     this.getRandomSong();
@@ -25,19 +25,17 @@ export class SongSwipingComponent implements OnInit {
 
 //get random User with his/her Titlesong and play it in the browser
   getRandomSong() {
-    //TODO - Change from first Song of Songlist to Random Song
-    this.musicService.getSongs()
+    this.songService.getRandomUser()
       .subscribe(
         data => {
-          this.currentSong = data[0];
+          this.currentUser = data[0];
           //TODO - Print Cover of Song
-          document.getElementById("divText").innerHTML = this.currentSong.songName;
-          //TODO get URL from Database, not hardcoded
+          document.getElementById("divText").innerHTML = this.currentUser.songName;
           this.audio = new Howl({
-            src: ['https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview62/v4/0e/36/44/0e3644c8-fc1e-9a80-e1df-05476d5d02f4/mzaf_552550923465582745.plus.aac.p.m4a']
+            src: [this.currentUser.URL],
           });
 
-          this.audioId= this.audio.play();
+          this.audio.play();
           this.changeButtonPlay();
           this.isPlaying = true;
         },
