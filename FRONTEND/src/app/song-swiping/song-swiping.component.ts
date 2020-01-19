@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output} from '@angular/core';
 import {Howl, Howler} from 'howler';
 import {SongSwipingService} from "./song-swiping.service";
 import { ToastController } from '@ionic/angular';
+import {stringify} from "querystring";
 
 
 @Component({
@@ -28,11 +29,16 @@ export class SongSwipingComponent implements OnInit {
     this.songService.getRandomUser()
       .subscribe(
         data => {
-          this.currentUser = data[0];
+          this.currentUser = data;
+          console.log("Fetched User:");
+          console.log(this.currentUser);
+          console.log(this.currentUser.user.name);
           //TODO - Print Cover of Song
-          document.getElementById("divText").innerHTML = this.currentUser.songName;
+
+          document.getElementById("divText").innerHTML = this.currentUser.user.name + "<br>" + this.currentUser.user.birthday;
           this.audio = new Howl({
-            src: [this.currentUser.URL],
+            //this.currentUser.URL dont work - hardcoded URL
+            src: ['https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview62/v4/0e/36/44/0e3644c8-fc1e-9a80-e1df-05476d5d02f4/mzaf_552550923465582745.plus.aac.p.m4a'],
           });
 
           this.audio.play();
@@ -64,6 +70,7 @@ export class SongSwipingComponent implements OnInit {
   repeatSong(): void {
     this.audio.stop();
     if (this.isPlaying==false) { this.changeButtonPlay()}
+    this.isPlaying = true;
     this.audio.play();
     console.log("User called repeatSong()")
   }
@@ -101,7 +108,7 @@ export class SongSwipingComponent implements OnInit {
   async openToast() {
     const toast = await this.toastCtrl.create({
       header: 'Warum ist es mein Lieblingssong?',
-      message: 'Ich habe dieses Lied bei meiner ersten Hochzeit gehört, seitdem erinnert es mich immer an die schöne Zeit, als ich mich endlich scheiden ließ! <3',
+      message: this.createMessage(),
       buttons: [
         {
           text: 'Back',
@@ -117,4 +124,15 @@ export class SongSwipingComponent implements OnInit {
     });
     toast.present();
   }
+  createMessage()  {
+    //TODO - Wenn implementiert, das Kommentar hinzufügen
+   //let comment= this.currentUser.comment
+
+    let comment = "Ich verbinde mit dem Lied so viele Erinnerungen an meine Zeit als Hund!"
+
+    return comment + "<br> <br> <strong> Songtitle: </strong>" + this.currentUser.songName +
+      "<br> <strong> Genre: </strong>" +this.currentUser.genre;
+
+  }
+
 }
