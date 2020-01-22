@@ -1,0 +1,21 @@
+<ion-title>pers. Daten bearbeiten</ion-title>
+
+    <!-- <ion-label position="stacked"></ion-label> -->
+    <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input placeholder="username" [(ngModel)]="person.name"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">E-Mail</ion-label>
+        <ion-input placeholder="mail" [(ngModel)]="person.mail" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Infotext</ion-label>
+        <ion-input placeholder="infotext" [(ngModel)]="person.infotext"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Passwort</ion-label>
+        <ion-input placeholder="password" [(ngModel)]="person.password" type="password"></ion-input>
+    </ion-item>
+
+    

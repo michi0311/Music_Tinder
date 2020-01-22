@@ -6,6 +6,7 @@ import { SongListComponent } from './profile/music/song-list/song-list.component
 import { SongSearchComponent } from './profile/music/song-search/song-search.component';
 import {SongSwipingComponent} from './song-swiping/song-swiping.component';
 import {SettingsComponent} from './profile/settings/settings.component';
+import { PersSettingsComponent } from './profile/settings/pers-settings/pers-settings.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'song-search', component: SongSearchComponent },
   // TODO Kathi: Add Routes für Swiping and Matching Screen, or Chatting or other
   { path: 'song-swipe', component: SongSwipingComponent},
-  { path: 'settings', component: SettingsComponent}
+  { path: 'settings', component: SettingsComponent},
+  {path: 'pers-settings', component: PersSettingsComponent}
 
 ];
 
