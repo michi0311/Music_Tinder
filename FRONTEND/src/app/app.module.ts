@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SongSwipingComponent } from './song-swiping/song-swiping.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {SettingsComponent} from './profile/settings/settings.component';
+import { PersSettingsComponent } from './profile/settings/pers-settings/pers-settings.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {SettingsComponent} from './profile/settings/settings.component';
     SongListComponent,
     SongSearchComponent,
     SongSwipingComponent,
-    SettingsComponent
+    SettingsComponent,
+    PersSettingsComponent
   ],
   imports: [
     BrowserModule,
