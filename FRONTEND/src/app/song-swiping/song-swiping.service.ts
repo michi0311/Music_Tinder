@@ -21,13 +21,25 @@ export class SongSwipingService {
     // dummy data
     //return of(SONGS);
   }
+  public setlove(uid) {
+    let url= 'http://localhost:3030/api/userMatch/:' + uid;
+    let myHeader = this.getHeader();
+    this.http.delete(url, JSON.parse(myHeader));
+  }
+  public sethate(uid) {
+    let url= 'http://localhost:3030/api/userMatch/:' + uid;
+    let myHeader = this.getHeader();
+    this.http.post(url, JSON.parse(myHeader));
+  }
 
   private getHeader() {
     //TODO - get Token from User - now... hardcoded
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoia2FicnVnZ2VyQG91dGxvb2suY29tIiwiZXhwIjoxNTc5NDQ2MTAxLCJpYXQiOjE1Nzk0MzUzMDB9.Nqi7k_GxmCjOS6xtukhTy8Nn2ZRZ0DyjxsDMP99FAD8";
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoia2FicnVnZ2VyQG91dGxvb2suY29tIiwiZXhwIjoxNTc5ODE3Mzc5LCJpYXQiOjE1Nzk4MDY1Nzl9.rbmGaOeXefXhPUW7R3hW3wZyaOIihGgevvqDQaiuAg8";
     let myHeaders = '{"headers" :  {"Authorization":"Bearer ' + token + '"}}';
     return myHeaders;
   }
+
+
 
 
 }

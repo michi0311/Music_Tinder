@@ -2,7 +2,6 @@ import {Component, OnInit, Input, Output} from '@angular/core';
 import {Howl, Howler} from 'howler';
 import {SongSwipingService} from "./song-swiping.service";
 import { ToastController } from '@ionic/angular';
-import {stringify} from "querystring";
 
 
 @Component({
@@ -33,22 +32,47 @@ export class SongSwipingComponent implements OnInit {
           console.log("Fetched User:");
           console.log(this.currentUser);
           console.log(this.currentUser.user.name);
+          console.log(this.currentUser.user.id);
+
           //TODO - Print Cover of Song
 
           document.getElementById("divText").innerHTML = this.currentUser.user.name + "<br>" + this.currentUser.user.birthday;
+
           this.audio = new Howl({
-            //this.currentUser.URL dont work - hardcoded URL
-            src: ['https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview62/v4/0e/36/44/0e3644c8-fc1e-9a80-e1df-05476d5d02f4/mzaf_552550923465582745.plus.aac.p.m4a'],
+
+          //TODO - URL of current Users lieblingssong
+
+
+            src: ['https://audio-ssl.itunes.apple.com/itunes-assets/Music1/v4/f1/1c/93/f11c9317-50bb-20bb-f76f-5e4289b52663/mzaf_6202006266019995023.plus.aac.p.m4a'],
+          });
+          //Gottes Gabe
+          var self = this;
+
+          //gets invoked, when audio ends
+          this.audio.on('end', function () {
+            console.log("end");
+            self.changeButtonPause();
+            self.isPlaying = false;
+
+
           });
 
           this.audio.play();
           this.changeButtonPlay();
           this.isPlaying = true;
+
         },
         err => console.error(err),
         () => console.log('done getting (now not random) song')
       );
 
+
+  }
+
+  private songEnd() {
+    console.log("Song ended");
+    this.isPlaying = false;
+    this.changeButtonPause()
   }
 
   //pauses song, when it plays, plays song when it's paused
@@ -78,22 +102,21 @@ export class SongSwipingComponent implements OnInit {
   //Switching to next Song - ngOnInit-Function gets called
   hateSong(): void {
     console.log("User called hateSong()");
+    this.songService.sethate(this.currentUser.user.id);
     if (this.isPlaying==false) { this.changeButtonPlay()}
     this.audio.stop();
     this.ngOnInit()
   }
 
-  saveSong(): void {
-    console.log("User called saveSong(NotWorking)")
-  }
 
   loveSong(): void {
-    console.log("User called loveSong(NotWorking)")
+    console.log("User called loveSong");
+    this.songService.setlove(this.currentUser.user.id);
+    if (this.isPlaying==false) { this.changeButtonPlay()}
+    this.audio.stop();
+    this.ngOnInit()
   }
 
-  infoSong(): void {
-    console.log("User called infoSong(NotWorking)")
-  }
 
   changeButtonPause(): void{
     document.getElementById("Pause/Play").innerHTML = "Play";
@@ -107,7 +130,7 @@ export class SongSwipingComponent implements OnInit {
 
   async openToast() {
     const toast = await this.toastCtrl.create({
-      header: 'Warum ist es mein Lieblingssong?',
+      header: 'Why is this song my favourite?',
       message: this.createMessage(),
       buttons: [
         {
@@ -128,7 +151,7 @@ export class SongSwipingComponent implements OnInit {
     //TODO - Wenn implementiert, das Kommentar hinzufügen
    //let comment= this.currentUser.comment
 
-    let comment = "Ich verbinde mit dem Lied so viele Erinnerungen an meine Zeit als Hund!"
+    let comment = "Ich verbinde mit dem Lied so viele Erinnerungen an meine Zeit als Hund!";
 
     return comment + "<br> <br> <strong> Songtitle: </strong>" + this.currentUser.songName +
       "<br> <strong> Genre: </strong>" +this.currentUser.genre;
