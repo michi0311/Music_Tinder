@@ -3,7 +3,7 @@
  * * * * * * * * * * * * * * */
 var express = require('express');
 var router = express.Router();
-const path = require("path")
+const path = require("path");
 const user = require(path.normalize("../database/models/index")).User;
 const hashTool = require(path.normalize("../database/helpers/hashTool"));
 

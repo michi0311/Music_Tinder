@@ -13,8 +13,6 @@ export class UserService {
   }
 
   register(user) {
-    console.log(user)
-    console.log(this.http.post('http://localhost:3030/api/user', user))
     return this.http.post('http://localhost:3030/api/user', user);
   }
 
