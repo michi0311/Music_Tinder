@@ -30,7 +30,8 @@
 
     <ion-item>
       <ion-label position="floating" color="primary">Birthday</ion-label>
-      <ion-input type="text" formControlName="birthday"></ion-input>
+      <ion-datetime formControlName="birthday" displayFormat="YYYY-MM-DD" min="{{mindate}}"
+                    max="{{maxdate}}"></ion-datetime>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.name">
