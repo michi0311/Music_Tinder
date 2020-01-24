@@ -1,20 +1,19 @@
-
-<h1 class="title">Musictinder - Find your perfect Listener</h1>
-<ion-app>
+<!--<h1 class="title">Musictinder - Find your perfect Listener</h1>-->
+<ion-app *ngIf="currentUser">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Music Tinder</ion-title>
   </ion-toolbar>
-<!-- fab placed to the top start -->
-<!---<ion-fab vertical="top" horizontal="start" slot="fixed">
- <ion-fab-button>
-    <ion-icon name="arrow-dropright"></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list>
-    <ion-fab-button color="light">
-      <a routerLink="/song-list" routerLinkActive="active"><ion-icon name="logo-facebook"></ion-icon></a>
+  <!-- fab placed to the top start -->
+  <!---<ion-fab vertical="top" horizontal="start" slot="fixed">
+   <ion-fab-button>
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list>
+      <ion-fab-button color="light">
+        <a routerLink="/song-list" routerLinkActive="active"><ion-icon name="logo-facebook"></ion-icon></a>
 
     </ion-fab-button>
     <ion-fab-button color="light">
@@ -35,39 +34,52 @@
       <ion-list>
 
         <a routerLink="/song-swipe" routerLinkActive="active" (click)="closeMenu()">
-        <ion-item>
-          <ion-icon name="heart-half" slot="start"></ion-icon>
-          <ion-label>SongSwipe</ion-label>
-        </ion-item></a>
+          <ion-item>
+            <ion-icon name="heart-half" slot="start"></ion-icon>
+            <ion-label>SongSwipe</ion-label>
+          </ion-item>
+        </a>
         <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">
-        <ion-item>
-          <ion-icon name="chatbubbles" slot="start"></ion-icon>
-          <ion-label>My matches</ion-label>
-          <ion-badge slot="end" color="primary">22</ion-badge>
-        </ion-item></a>
+          <ion-item>
+            <ion-icon name="chatbubbles" slot="start"></ion-icon>
+            <ion-label>My matches</ion-label>
+            <ion-badge slot="end" color="primary">22</ion-badge>
+          </ion-item>
+        </a>
         <a routerLink="/song-list" routerLinkActive="active" (click)="closeMenu()">
-        <ion-item>
-          <ion-icon name="musical-note" slot="start"></ion-icon>
-          <ion-label>Music I like</ion-label>
-          <ion-badge slot="end" color="secondary">134</ion-badge>
-        </ion-item></a>
+          <ion-item>
+            <ion-icon name="musical-note" slot="start"></ion-icon>
+            <ion-label>Music I like</ion-label>
+            <ion-badge slot="end" color="secondary">134</ion-badge>
+          </ion-item>
+        </a>
         <a routerLink="/settings" routerLinkActive="active" (click)="closeMenu()">
-        <ion-item>
-          <ion-icon name="settings" slot="start"></ion-icon>
-          <ion-label>Settings</ion-label>
-        </ion-item></a>
+          <ion-item>
+            <ion-icon name="settings" slot="start"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+        </a>
+        <a routerLink="/" routerLinkActive="active" (click)="logout()">
+          <ion-item>
+            <ion-icon name="logout" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </a>
       </ion-list>
     </ion-content>
   </ion-menu>
-<nav>
+  <nav>
+
+  </nav>
+  <ion-content>
+    <router-outlet main></router-outlet>
+  </ion-content>
+</ion-app>
 
 
-
-
-
-</nav>
+<ion-app *ngIf="!currentUser">
 <ion-content>
-<router-outlet main></router-outlet>
+  <router-outlet></router-outlet>
 </ion-content>
 </ion-app>
 
