@@ -1,0 +1,25 @@
+﻿<ion-content class="ion-padding">
+  <img width="350em" class="logo" src="/assets/images/logo.svg"/>
+  <ion-card class="login-card">
+    <form [formGroup]="login_validations_form" (ngSubmit)="onSubmit(login_validations_form.value)">
+      <ion-item>
+        <ion-label position="floating" color="primary">Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-button class="" expand="full" type="submit" color="primary"
+                  [disabled]="!login_validations_form.valid">Login
+      </ion-button>
+    </form>
+    <div class="right">
+      <a routerLink="/register" class="btn btn-link">Sign in</a>
+    </div>
+  </ion-card>
+
+</ion-content>
+

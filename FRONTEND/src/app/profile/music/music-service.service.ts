@@ -25,7 +25,7 @@ export class MusicServiceService {
   // @ts-ignore
   public addSong(song  ) {
     const songExport = new Song(1, song.trackName, song.previewUrl, song.trackId.toString(), song.primaryGenreName, 0, 0);
-    log(songExport);
+    //log(songExport);
     return this.http.post('http://localhost:3030/api/song/', songExport, {});
   }
 }

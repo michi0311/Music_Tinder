@@ -1,5 +1,5 @@
 
-<ion-input  #search (keyup)="searchSongs(search.value)" ng-model="searchText" placeholder="enter search term here"></ion-input>
+<ion-searchbar  #search (keyup)="searchSongs(search.value)" ng-model="searchText" placeholder="enter search term here"></ion-searchbar>
 
 
 <ion-list *ngIf="results != undefined">
