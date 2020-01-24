@@ -21,20 +21,28 @@ export class SongSwipingService {
     // dummy data
     //return of(SONGS);
   }
+  public  getSong(uid) {
+    log('call service getSong');
+    let myHeader = this.getHeader();
+    let url = 'http://localhost:3030/api/user/song/:' + uid;
+    return this.http.get(url,JSON.parse(myHeader));
+    // dummy data
+    //return of(SONGS);
+  }
   public setlove(uid) {
     let url= 'http://localhost:3030/api/userMatch/:' + uid;
     let myHeader = this.getHeader();
-    this.http.delete(url, JSON.parse(myHeader));
+    console.log(this.http.post(url, JSON.parse(myHeader)));
   }
   public sethate(uid) {
     let url= 'http://localhost:3030/api/userMatch/:' + uid;
     let myHeader = this.getHeader();
-    this.http.post(url, JSON.parse(myHeader));
+    this.http.delete(url, JSON.parse(myHeader));
   }
 
   private getHeader() {
     //TODO - get Token from User - now... hardcoded
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoia2FicnVnZ2VyQG91dGxvb2suY29tIiwiZXhwIjoxNTc5ODE3Mzc5LCJpYXQiOjE1Nzk4MDY1Nzl9.rbmGaOeXefXhPUW7R3hW3wZyaOIihGgevvqDQaiuAg8";
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoia2FicnVnZ2VyQG91dGxvb2suY29tIiwiZXhwIjoxNTc5ODYzNDk2LCJpYXQiOjE1Nzk4NTI2OTV9.EDnOYzhSRsNooGyEasQ4x3vGiyXR4otureK0867TFnY";
     let myHeaders = '{"headers" :  {"Authorization":"Bearer ' + token + '"}}';
     return myHeaders;
   }
