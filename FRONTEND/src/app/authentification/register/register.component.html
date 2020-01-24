@@ -32,10 +32,11 @@
       <ion-item>
         <ion-label position="floating" color="primary">Birthday</ion-label>
         <ion-datetime formControlName="birthday" displayFormat="YYYY-MM-DD" min="{{mindate}}"
-                      max="{{maxdate}}"></ion-datetime>
+                      max="{{maxdate}}">
+        </ion-datetime>
       </ion-item>
       <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.name">
+        <ng-container *ngFor="let validation of validation_messages.birthday">
           <div class="error-message"
                *ngIf="register_validations_form.get('birthday').hasError(validation.type) && (register_validations_form.get('birthday').dirty || register_validations_form.get('birthday').touched)">
             <ion-icon name="information-circle-outline"></ion-icon>
