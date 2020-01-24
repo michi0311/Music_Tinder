@@ -1,4 +1,4 @@
-<h1 class="title">Musictinder - Find your perfect Listener</h1>
+<!--<h1 class="title">Musictinder - Find your perfect Listener</h1>-->
 <ion-app *ngIf="currentUser">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -70,25 +70,18 @@
   </ion-menu>
   <nav>
 
-
   </nav>
   <ion-content>
     <router-outlet main></router-outlet>
   </ion-content>
 </ion-app>
 
-<!-- main app container -->
-<div class="jumbotron" *ngIf="!currentUser">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 offset-sm-3">
-        <alert></alert>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  </div>
-</div>
 
+<ion-app *ngIf="!currentUser">
+<ion-content>
+  <router-outlet></router-outlet>
+</ion-content>
+</ion-app>
 
 
 <!--

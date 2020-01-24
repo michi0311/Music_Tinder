@@ -5,9 +5,11 @@ import { first } from 'rxjs/operators';
 
 import { AlertService } from '../services/alert.service';
 import { AuthenticationService } from '../services/authentication.service';
-import {createConsoleLogServer} from "@ionic/angular-toolkit/builders/cordova-serve/log-server";
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
+})
 export class LoginComponent implements OnInit {
     login_validations_form: FormGroup;
     loading = false;
@@ -36,13 +38,6 @@ export class LoginComponent implements OnInit {
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
-
-  validation_messages = {
-    'email': [
-      {type: 'required', message: 'Email is required.'}],
-    'password': [
-      {type: 'required', message: 'Password is required.'}],
-  };
 
     // convenience getter for easy access to form fields
     get f() { return this.login_validations_form.controls; }

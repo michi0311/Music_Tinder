@@ -10,7 +10,8 @@ import {PasswordValidationService} from "../services/passwordValidation.service"
 import {User} from "../model/user";
 
 @Component({
-  templateUrl: 'register.component.html'
+  templateUrl: 'register.component.html',
+  styleUrls: ['register.component.css']
 })
 export class RegisterComponent implements OnInit {
   register_validations_form: FormGroup;
@@ -66,6 +67,9 @@ export class RegisterComponent implements OnInit {
     'email': [
       {type: 'required', message: 'Email is required.'},
       {type: 'pattern', message: 'Please enter a valid email.'}
+    ],
+    'birthday': [
+      {type: 'required', message: 'Birthday is required.'}
     ],
     'password': [
       {type: 'required', message: 'Password is required.'},
