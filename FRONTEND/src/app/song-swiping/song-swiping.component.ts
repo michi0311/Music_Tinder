@@ -16,7 +16,7 @@ export class SongSwipingComponent implements OnInit {
 
   constructor(private songService: SongSwipingService, public toastCtrl: ToastController) {}
 
-  //TODO - Stop song when switching routes
+  //TODO - Stop song when switching routes!
   ngOnInit() {
     this.getRandomSong();
   }
