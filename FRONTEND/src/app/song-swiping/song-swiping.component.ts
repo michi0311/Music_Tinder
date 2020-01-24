@@ -87,12 +87,22 @@ export class SongSwipingComponent implements OnInit {
     this.ngOnInit()
   }
 
-  loveSong(): void {
-    console.log("User called loveSong");
-    this.songService.setlove(this.randomUser.user.id);
-    if (this.isPlaying==false) { this.changeButtonPlay()}
-    this.audio.stop();
-    this.ngOnInit()
+  loveSong(): void {this.songService.setlove(this.randomUser.user.id)
+    .subscribe(
+      data => {
+        let userMatch = data;
+        console.log("User called loveSong");
+        console.log(userMatch);
+        console.log("This was the Result")
+        this.songService.setlove(this.randomUser.user.id);
+        if (this.isPlaying==false) { this.changeButtonPlay()}
+        this.audio.stop();
+        this.ngOnInit()
+      },
+      err => console.error(err),
+      () => console.log('done getting love')
+    );
+
   }
 
   //HTML changing methods
