@@ -61,15 +61,15 @@ export class RegisterComponent implements OnInit {
   }
 
   validation_messages = {
+    'birthday': [
+      {type: 'required', message: 'Birthday is required.'}
+    ],
     'name': [
       {type: 'required', message: 'Name is required.'}
     ],
     'email': [
       {type: 'required', message: 'Email is required.'},
       {type: 'pattern', message: 'Please enter a valid email.'}
-    ],
-    'birthday': [
-      {type: 'required', message: 'Birthday is required.'}
     ],
     'password': [
       {type: 'required', message: 'Password is required.'},
