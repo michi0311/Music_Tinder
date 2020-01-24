@@ -1,12 +1,44 @@
-<h1>Swipe Your Song here!</h1>
 
-<div class="flexButton">
-  <button class="myButton RepeatSong" (click)="repeatSong()"> WH </button>
-  <button class="myButton Hate" (click)="hateSong()"> X </button>
-  <button class="myButton Save" (click)="saveSong()"> S </button>
-  <button class="myButton Love" (click)="loveSong()"> <3 </button>
-  <button class="myButton Info" (click)="infoSong()"> I </button>
+<div>
+  <p id="divText">
+  </p>
+  <p> This is his song. Do you like it? </p>
 </div>
+
+
+
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom" >
+    <ion-tab-button (click)="pausePlaySong()">
+      <ion-icon size="large" name="pause" id="Pause/PlayIcon"></ion-icon>
+      <ion-label id="Pause/Play">Pause</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="hateSong()">
+      <ion-icon size="large" name="close-circle" color=""></ion-icon>
+      <ion-label>Hate</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="openToast()">
+      <ion-icon size="large" name="musical-note"></ion-icon>
+      <ion-label>Info</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="loveSong()">
+      <ion-icon size="large" name="heart"></ion-icon>
+      <ion-label>Love</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="repeatSong()">
+      <ion-icon size="large" name="refresh"></ion-icon>
+      <ion-label>Repeat</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>
+
+
 
 
 

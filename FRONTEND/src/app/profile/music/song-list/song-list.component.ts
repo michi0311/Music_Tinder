@@ -20,18 +20,18 @@ public songs;
   }
 
   ngOnInit() {
-    this.getSongs();
-  }
+  this.getSongs();
+}
 
-  getSongs() {
-    this.musicService.getSongs()
-      .subscribe(
+getSongs() {
+  this.musicService.getSongs()
+    .subscribe(
       data => {
         console.log(data);
         this.songs = data; } ,
       err => console.error(err),
       () => console.log('done loading foods')
     );
-  }
+}
 
 }

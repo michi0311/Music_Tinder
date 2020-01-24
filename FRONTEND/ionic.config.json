@@ -1,0 +1,7 @@
+{
+  "name": "Music_Tinder",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

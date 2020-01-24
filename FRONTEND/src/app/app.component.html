@@ -1,14 +1,34 @@
-<h1 class="title">Angular Router</h1>
-<nav>
-  <a routerLink="/song-list" routerLinkActive="active">SongList</a>
 
-  <a routerLink="/song-search" routerLinkActive="active">SongSearch</a>
+<h1 class="title">Musictinder - Find your perfect (Music)lover</h1>
+<ion-app>
+  <!-- fab placed to the top start -->
+  <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="heart"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list>
+      <a routerLink="/song-list" routerLinkActive="active">
+        <ion-fab-button color="light">
+          <ion-icon size="large" name="musical-note">
+          </ion-icon>
+        </ion-fab-button></a>
+      <a routerLink="/song-search" routerLinkActive="active">
+        <ion-fab-button color="light">
+          <ion-icon size="large" name="musical-notes"></ion-icon>
+        </ion-fab-button>
+      </a>
+      <a routerLink="/song-swipe" routerLinkActive="active">
+        <ion-fab-button color="light">
+          <ion-icon size="large" name="heart"></ion-icon>
+        </ion-fab-button>
+      </a>
+    </ion-fab-list>
+  </ion-fab>
 
-  <a routerLink="/song-swipe" routerLinkActive="active">SongSwipe</a>
-
-</nav>
 
 <router-outlet></router-outlet>
+</ion-app>
+
 
 <!--
 Copyright Google LLC. All Rights Reserved.
