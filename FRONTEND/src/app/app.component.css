@@ -33,3 +33,7 @@ ion-fab {
   padding: 20px;
 }
 
+ion-fab-list ion-fab-button{
+  border-radius: 30px;
+  margin-top: 20px
+}

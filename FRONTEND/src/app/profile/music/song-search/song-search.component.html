@@ -2,7 +2,7 @@
 <ion-searchbar  #search (keyup)="searchSongs(search.value)" ng-model="searchText" placeholder="enter search term here"></ion-searchbar>
 
 
-<ion-list>
+<ion-list *ngIf="results != undefined">
   <ion-item *ngFor="let result of results.results">
     <ion-avatar slot="start">
       <img src="{{result.artworkUrl100}}">

@@ -17,7 +17,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {SongSwipingComponent} from './song-swiping/song-swiping.component';
 import {SettingsComponent} from './profile/settings/settings.component';
-import { PersSettingsComponent } from './profile/settings/pers-settings/pers-settings.component';
+import {PersSettingsComponent } from './profile/settings/pers-settings/pers-settings.component';
 
 import {LoginComponent} from './authentification/login/login.component';
 import {RegisterComponent} from './authentification/register/register.component';

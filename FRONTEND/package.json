@@ -21,14 +21,18 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ionic-native/core": "^5.1.0",
+    "@ionic-native/video-player": "^5.19.1",
     "@ionic/angular": "^4.11.8",
     "@ionic/storage": "^2.2.0",
     "cordova": "^9.0.0",
     "hammerjs": "^2.0.8",
+    "howler": "^2.1.3",
     "ionic": "^5.4.15",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@angular/http": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.22",
@@ -51,6 +55,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "@ionic/angular-toolkit": "latest"
   }
 }
