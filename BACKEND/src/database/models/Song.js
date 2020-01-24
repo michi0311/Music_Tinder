@@ -14,8 +14,17 @@ module.exports = (sequelize, DataTypes) => {
         songName: {
             type: DataTypes.STRING(30)
         },
+        artistName: {
+            type: DataTypes.STRING(50)
+        },
+        collectionName: {
+            type: DataTypes.STRING(70)
+        },
         URL: {
-            type: DataTypes.STRING(100)
+            type: DataTypes.STRING(200)
+        },
+        artworkURL: {
+            type: DataTypes.STRING(200)
         },
         iTunesID: {
             type: DataTypes.INTEGER(12),

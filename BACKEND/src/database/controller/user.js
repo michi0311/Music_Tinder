@@ -91,10 +91,7 @@ module.exports = {
     async changeUser (req,res) {
         try {
             // TODO only a User can update itself
-            const _id = req.params.id;
-            if (_id != req.user.id) {
-                return res.status(401).send({error: "Not allowed to change another user"})
-            }
+            const _id = req.user.id;
             const updates = Object.keys(req.body);
             const allowedUpdates = ["name", "email", "password", "birthday", "password"];
             const isValidOperation = updates.every((update) => allowedUpdates.includes(update));

@@ -14,7 +14,7 @@ router.get('/',passport.authenticate("jwt", { session: false }),userController.g
 router.get('/random',passport.authenticate("jwt", { session: false }),userController.getRandomUser);
 router.get('/:id',passport.authenticate("jwt", { session: false }),userController.getUserById);
 
-router.patch('/:id',passport.authenticate("jwt", { session: false }),userController.changeUser);
+router.patch('/',passport.authenticate("jwt", { session: false }),userController.changeUser);
 
 router.delete('/:id',passport.authenticate("jwt", { session: false }),userController.deleteUser)
 
