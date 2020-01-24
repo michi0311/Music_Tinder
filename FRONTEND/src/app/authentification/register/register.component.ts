@@ -13,13 +13,14 @@ import {User} from "../model/user";
   templateUrl: 'register.component.html'
 })
 export class RegisterComponent implements OnInit {
-  // registerForm: FormGroup;
   register_validations_form: FormGroup;
   matching_passwords_group: FormGroup;
 
   loading = false;
   submitted = false;
-  private user: string;
+  maxdate = this.formatDate(new Date, 10);
+  mindate = this.formatDate(new Date, 150);
+  private user: string = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -109,5 +110,20 @@ export class RegisterComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
         });
+  }
+
+  // format date and subtract the amount of years
+  formatDate(date, years) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear() - years;
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 }
