@@ -1,37 +1,25 @@
-﻿<div style="height: 500px;">
-<ion-content class="ion-padding form-content">
-  <form [formGroup]="login_validations_form" (ngSubmit)="onSubmit(login_validations_form.value)">
-    <ion-item>
-      <ion-label position="floating" color="primary">Email</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.email">
-        <div class="error-message"
-             *ngIf="login_validations_form.get('email').hasError(validation.type) && (login_validations_form.get('email').dirty || login_validations_form.get('email').touched)">
-          <ion-icon name="information-circle-outline"></ion-icon>
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
+﻿<ion-content class="ion-padding">
+  <img width="350em" class="logo" src="/assets/images/logo.svg"/>
+  <ion-card class="login-card">
+    <form [formGroup]="login_validations_form" (ngSubmit)="onSubmit(login_validations_form.value)">
+      <ion-item>
+        <ion-label position="floating" color="primary">Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating" color="primary">Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.password">
-        <div class="error-message"
-             *ngIf="login_validations_form.get('password').hasError(validation.type) && (login_validations_form.get('password').dirty || login_validations_form.get('password').touched)">
-          <ion-icon name="information-circle-outline"></ion-icon>
-          {{ validation.message }}
-        </div>
-      </ng-container>
+      <ion-item>
+        <ion-label position="floating" color="primary">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-button class="" expand="full" type="submit" color="primary"
+                  [disabled]="!login_validations_form.valid">Login
+      </ion-button>
+    </form>
+    <div class="right">
+      <a routerLink="/register" class="btn btn-link">Sign in</a>
     </div>
-    <ion-button color="primary" class="submit-btn" expand="full" type="submit"
-                [disabled]="!login_validations_form.valid">Login
-    </ion-button>
-  </form>
-  <a routerLink="/register" class="btn btn-link">Sign in</a>
+  </ion-card>
+
 </ion-content>
-</div>
+
