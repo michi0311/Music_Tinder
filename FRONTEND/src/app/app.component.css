@@ -1,0 +1,39 @@
+/* AppComponent's private CSS styles */
+body {
+  /* padding or margin don't work */
+}
+
+h1 {
+  color: #3880ff;
+  padding-top: 25px;
+  padding-left: 120px;
+}
+
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+  color: black;
+}
+
+nav a:hover {
+  color: #336b81;
+  background-color: #e0e0dc;
+}
+nav a.active {
+  color: #336b81;
+  background-color: #cecece;
+}
+
+ion-fab {
+  padding: 20px;
+}
+
+ion-fab-list ion-fab-button{
+  border-radius: 30px;
+  margin-top: 20px
+}

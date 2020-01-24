@@ -1,0 +1,18 @@
+
+<ion-searchbar  #search (keyup)="searchSongs(search.value)" ng-model="searchText" placeholder="enter search term here"></ion-searchbar>
+
+
+<ion-list *ngIf="results != undefined">
+  <ion-item *ngFor="let result of results.results">
+    <ion-avatar slot="start">
+      <img src="{{result.artworkUrl100}}">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{result.trackName}}</h2>
+      <h3>{{result.artistName}}</h3>
+      <p>{{result.collectionName}}</p>
+    </ion-label>
+    <ion-button (click)="addSong(result)">set song</ion-button>
+  </ion-item>
+
+</ion-list>

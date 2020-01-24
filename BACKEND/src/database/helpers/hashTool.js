@@ -8,7 +8,7 @@
  * Create and check password hashes using the nice and platform-independent bcryptjs.
  */
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 /**
  * Generate a bcrypt hash from a given password 
