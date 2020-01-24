@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 import {CommonModule} from '@angular/common';
-import { switchMap } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
 import {MusicServiceService} from '../music-service.service';
 // tslint:disable-next-line:import-spacing
 import {Song} from '../song';
@@ -15,7 +15,8 @@ import {ITunesWebApi} from '../i-tunes-web-api';
   styleUrls: ['./song-list.component.css']
 })
 export class SongListComponent implements OnInit {
-public songs;
+  public songs;
+
   constructor(private musicService: MusicServiceService, private route: ActivatedRoute) {
 
   }
@@ -28,11 +29,12 @@ public songs;
     this.musicService.getSongs()
       .subscribe(
         data => {
-        console.log(data);
-        this.songs = data; } ,
-      err => console.error(err),
-      () => console.log('done loading foods')
-    );
+          console.log(data);
+          this.songs = data;
+        },
+        err => console.error(err),
+        () => console.log('done loading foods')
+      );
   }
 
 }
