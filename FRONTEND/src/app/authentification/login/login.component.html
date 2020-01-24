@@ -1,4 +1,5 @@
-﻿<ion-content class="ion-padding form-content" style="height: 900px;">
+﻿<div style="height: 500px;">
+<ion-content class="ion-padding form-content">
   <form [formGroup]="login_validations_form" (ngSubmit)="onSubmit(login_validations_form.value)">
     <ion-item>
       <ion-label position="floating" color="primary">Email</ion-label>
@@ -33,3 +34,4 @@
   </form>
   <a routerLink="/register" class="btn btn-link">Sign in</a>
 </ion-content>
+</div>

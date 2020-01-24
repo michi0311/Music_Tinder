@@ -19,13 +19,10 @@ import {SongSwipingComponent} from './song-swiping/song-swiping.component';
 import {SettingsComponent} from './profile/settings/settings.component';
 import { PersSettingsComponent } from './profile/settings/pers-settings/pers-settings.component';
 
-import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from './authentification/login/login.component';
 import {RegisterComponent} from './authentification/register/register.component';
 import {AlertComponent} from './authentification/alert/alert.component';
 
-// TODO: Must delete
-import {fakeBackendProvider} from './authentification/helpers/fake-backend';
 import {JwtInterceptor} from './authentification/helpers/jwt.interceptor';
 import {ErrorInterceptor} from "./authentification/helpers/error.interceptor";
 
@@ -36,7 +33,6 @@ import {ErrorInterceptor} from "./authentification/helpers/error.interceptor";
     SongSearchComponent,
     SongSwipingComponent,
     SettingsComponent,
-    HomeComponent,
     RegisterComponent,
     LoginComponent,
     AlertComponent,
@@ -57,9 +53,6 @@ import {ErrorInterceptor} from "./authentification/helpers/error.interceptor";
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-
-    // provider used to create fake backend
-    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
