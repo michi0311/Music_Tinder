@@ -17,20 +17,20 @@ export class SongSwipingService {
     return this.http.get('http://localhost:3030/api/user/random',JSON.parse(myHeader));
   }
 
-  public  getSong(sid) {
+  public  getSong(sid:number) {
     log('call service getSong');
     let url = `http://localhost:3030/api/song/${sid}`;
     return this.http.get(url);
   }
 
-  public setlove(uid) {
-    let url= `http://localhost:3030/api/match/${uid}`;
+  public setlove(uid:number) {
+    let url= "http://localhost:3030/api/match/" + uid;
     let myHeader = this.getHeader();
     return this.http.post(url, JSON.parse(myHeader));
   }
 
-  public sethate(uid) {
-    let url= `http://localhost:3030/api/match/${uid}`;
+  public sethate(uid:number) {
+    let url= "http://localhost:3030/api/match/" +uid;
     let myHeader = this.getHeader();
     return this.http.delete(url, JSON.parse(myHeader));
   }
