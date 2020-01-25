@@ -1,25 +1,23 @@
-﻿<ion-content class="ion-padding">
-  <img width="350em" class="logo" src="/assets/images/logo.svg"/>
-  <ion-card class="login-card">
-    <form [formGroup]="login_validations_form" (ngSubmit)="onSubmit(login_validations_form.value)">
-      <ion-item>
-        <ion-label position="floating" color="primary">Email</ion-label>
-        <ion-input type="text" formControlName="email"></ion-input>
-      </ion-item>
+﻿<ion-content fullscreen="true" class="ion-padding">
+  <img width="90%" class="logo" src="/assets/images/logo.svg"/>
+  <form [formGroup]="login_validations_form">
+    <ion-item lines="inset">
+      <ion-label position="floating" color="primary">Email</ion-label>
+      <ion-input type="text" formControlName="email" autocomplete></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label position="floating" color="primary">Password</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
+    <ion-item lines="inset">
+      <ion-label position="floating" color="primary">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
 
-      <ion-button class="" expand="full" type="submit" color="primary"
-                  [disabled]="!login_validations_form.valid">Login
-      </ion-button>
-    </form>
-    <div class="right">
-      <a routerLink="/register" class="btn btn-link">Sign in</a>
-    </div>
-  </ion-card>
+    <ion-button class="submit-button" shape="round" expand="full" fill="solid" [disabled]="!login_validations_form.valid" (click)="onSubmit(login_validations_form.value)">
+      Login
+    </ion-button>
+  </form>
 
+  <p class="sign-note">Don't have an account?</p>
+  <ion-button class="sign-in-button" shape="round" fill="outline" routerLink="/register">
+    Sign in
+  </ion-button>
 </ion-content>
-
