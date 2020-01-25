@@ -17,13 +17,12 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   constructor(private songService: SongSwipingService, public toastCtrl: ToastController) {
   }
 
-
-  //TODO - Stop song when switching routes!
-
+  //At start - fetch Random User and play his/her song
   ngOnInit(): void {
     this.getRandomSong();
   }
 
+  //stop Song when switching Route
   ngOnDestroy() {
     try {
       this.audio.stop()
@@ -31,7 +30,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
 
     }
   }
-
 
 //get random user with his/her titlesong and play it in the browser
   getRandomSong() {
@@ -42,7 +40,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           console.log("Fetched User: " + this.randomUser.user.name + " " + this.randomUser.user.id);
 
           //TODO - Print Cover of Song
-          document.getElementById("divText").innerHTML = this.randomUser.user.name + "<br>" + this.randomUser.user.birthday;
+          document.getElementById("divText").innerHTML = this.randomUser.user.name + "<br>" + this.randomUser.user.birthday + "<br>" + this.getAge(this.randomUser.user.birthday);
 
           this.audio = new Howl({
             //TODO - URL of current Users lieblingssong
@@ -139,7 +137,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   // event, that triggers the information-toast
   async openToast() {
     const toast = await this.toastCtrl.create({
-      header: 'Why is this song my favourite?',
+      header: this.randomUser.user.name + " (" + this.getAge(this.randomUser.user.birthday) + ") : " ,
       message: this.createMessage(),
       buttons: [
         {
@@ -165,5 +163,17 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
     let comment = "Ich verbinde mit dem Lied so viele Erinnerungen an meine Zeit als Hund!";
     return comment + "<br> <br> <strong> Songtitle: </strong>" + this.randomUser.songName +
       "<br> <strong> Genre: </strong>" + this.randomUser.genre;
+  }
+
+  //calculate Age
+  getAge(birthday) {
+    var today = new Date();
+    var birthDate = new Date(birthday);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   }
 }
