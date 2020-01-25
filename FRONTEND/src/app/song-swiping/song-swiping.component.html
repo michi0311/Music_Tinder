@@ -1,11 +1,35 @@
+
+  <ion-card class="music-card">
+    <img alt="Cover"  src="/assets/images/sample.jfif"/>
+    <!--        You can you use the ion-img -->
+<!--            <ion-img [src]="item.src"></ion-img>-->
+    <ion-card-header>
+      <ion-card-subtitle>Interpret</ion-card-subtitle>
+      <ion-card-title>Song-Titel</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin
+      Territory in 1836.
+    </ion-card-content>
+
+    <ion-chip class="ion-margin-start">
+      <ion-avatar>
+        <img alt="Gender" src="/assets/images/f.svg">
+        <!--        You can you use the ion-img -->
+        <!--        <ion-img [src]="item.src"></ion-img>-->
+      </ion-avatar>
+      <ion-label>Kerstin, 25</ion-label>
+    </ion-chip>
+  </ion-card>
+
 <ion-tabs>
-  <ion-tab-bar slot="bottom" >
+  <ion-tab-bar slot="bottom" class="bottom-bar">
     <ion-tab-button (click)="pausePlaySong()">
       <ion-icon size="large" name="pause" id="Pause/PlayIcon"></ion-icon>
       <ion-label id="Pause/Play">Pause</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="hateSong()">
+    <ion-tab-button class="hate" (click)="hateSong()">
       <ion-icon size="large" name="close-circle" color=""></ion-icon>
       <ion-label>Hate</ion-label>
     </ion-tab-button>
@@ -15,7 +39,7 @@
       <ion-label>Info</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="loveSong()">
+    <ion-tab-button class="love" (click)="loveSong()">
       <ion-icon size="large" name="heart"></ion-icon>
       <ion-label>Love</ion-label>
     </ion-tab-button>
@@ -27,7 +51,6 @@
 
   </ion-tab-bar>
 </ion-tabs>
-
 
 
 
