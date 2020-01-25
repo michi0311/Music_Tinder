@@ -4,7 +4,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Music Tinder</ion-title>
+    <ion-title>
+      <img height="70px" class="logo" src="/assets/images/logo.svg" alt="Music Tinder"/>
+    </ion-title>
   </ion-toolbar>
   <!-- fab placed to the top start -->
   <!---<ion-fab vertical="top" horizontal="start" slot="fixed">
@@ -71,16 +73,16 @@
   <nav>
 
   </nav>
-  <ion-content>
+  <ion-content class="page-content">
     <router-outlet main></router-outlet>
   </ion-content>
 </ion-app>
 
 
 <ion-app *ngIf="!currentUser">
-<ion-content>
-  <router-outlet></router-outlet>
-</ion-content>
+  <ion-content>
+    <router-outlet></router-outlet>
+  </ion-content>
 </ion-app>
 
 
