@@ -11,6 +11,7 @@ import {ToastController} from '@ionic/angular';
 
 export class SongSwipingComponent implements OnInit, OnDestroy {
   public randomUser;
+  public randomSong;
   public audio;
   public isPlaying = false;
 
@@ -39,13 +40,42 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.randomUser = data;
           console.log("Fetched User: " + this.randomUser.user.name + " " + this.randomUser.user.id);
 
+        //TODO Uncomment, when Service finished
+    /*
+    this.songService.getSong(this.randomUser.user.id)
+      .subscribe(
+        data => {
+        this.randomSong = data;
+        console.log("got Song: " + this.randomSong.song.songName + " " + this.randomSong.song.interpreter)
+
+        //TODO - Print Cover of Song
+
+
+        this.audio = new Howl({
+          src: ['this.randomSong.song.URL'],
+          });
+
+          //Gottes Gabe
+          var self = this;
+          //gets invoked, when audio ends
+          this.audio.on('end', function () {
+            self.changeButtonPause();
+            self.isPlaying = false;
+          });
+
+          this.audio.play();
+          this.changeButtonPlay();
+          this.isPlaying = true;
+        },
+          err => ngOnInit(),
+        () => console.log('done getting random song'));
+        */
+
           //TODO - Print Cover of Song
-          document.getElementById("divText").innerHTML = this.randomUser.user.name + "<br>" + this.randomUser.user.birthday + "<br>" + this.getAge(this.randomUser.user.birthday);
+
 
           this.audio = new Howl({
-            //TODO - URL of current Users lieblingssong
-
-            src: ['https://audio-ssl.itunes.apple.com/itunes-assets/Music1/v4/f1/1c/93/f11c9317-50bb-20bb-f76f-5e4289b52663/mzaf_6202006266019995023.plus.aac.p.m4a'],
+           src: ['https://audio-ssl.itunes.apple.com/itunes-assets/Music1/v4/f1/1c/93/f11c9317-50bb-20bb-f76f-5e4289b52663/mzaf_6202006266019995023.plus.aac.p.m4a'],
           });
 
           //Gottes Gabe
@@ -61,10 +91,10 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.isPlaying = true;
         },
         err => console.error(err),
-        () => console.log('done getting (now not random) song')
+        () => console.log('done getting random User')
       );
-  }
 
+  }
 
   //pauses song, when it plays, plays song when it's paused
   pausePlaySong(): void {
@@ -78,7 +108,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       this.changeButtonPlay()
     }
     console.log("User called pausePlaySong()");
-    console.log(this.songService.getSong(this.randomUser.user.id))
   }
 
   repeatSong(): void {
@@ -161,8 +190,12 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
     //TODO - Wenn implementiert, das Kommentar hinzufügen
     //let comment= this.randomUser.user.comment
     let comment = "Ich verbinde mit dem Lied so viele Erinnerungen an meine Zeit als Hund!";
-    return comment + "<br> <br> <strong> Songtitle: </strong>" + this.randomUser.songName +
-      "<br> <strong> Genre: </strong>" + this.randomUser.genre;
+    return comment
+
+    //TODO - Uncomment when Service finished
+    /*return comment + "<br> <br> <strong> Title: </strong>" + this.randomSong.songName +
+      "<br> <strong> Interpretor: </strong>" + this.randomSong.interpretor + "<br> <strong> Genre: </strong>" + this.randomSong.genre +
+      + "<br> <strong> Year: </strong>" + this.randomSong.year;*/
   }
 
   //calculate Age
