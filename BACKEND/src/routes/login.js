@@ -43,7 +43,8 @@ router.post("/", async function (req, res, next) {
         token: token,
         name: logUser.name,
         email: logUser.email,
-        birthday: logUser.birthday
+        birthday: logUser.birthday,
+        songDescription: logUser.songDescription
       });
     } else {
       return res.status(401).json({ error: "Password is incorrect" });

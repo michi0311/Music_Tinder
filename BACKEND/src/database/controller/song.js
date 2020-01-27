@@ -31,7 +31,10 @@ module.exports = {
 
             const songCollection = await song.create({
                 songName: req.body.songName,
+                artistName: req.body.artistName,
+                collectionName: req.body.collectionName,
                 URL: req.body.URL,
+                artworkURL: req.body.artworkURL,
                 iTunesID: req.body.iTunesID,
                 genre: req.body.genre,
                 totalLikes: 0,
