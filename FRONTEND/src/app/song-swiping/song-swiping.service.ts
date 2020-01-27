@@ -30,9 +30,9 @@ export class SongSwipingService {
   }
 
   public sethate(uid:number) {
-    let url= "http://localhost:3030/api/match/" +uid;
+    let url= "http://localhost:3030/api/match/hate" +uid;
     let myHeader = this.getHeader();
-    return this.http.delete(url, JSON.parse(myHeader));
+    return this.http.get(url, JSON.parse(myHeader));
   }
 
   private getHeader() {
