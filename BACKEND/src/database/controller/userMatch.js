@@ -22,7 +22,7 @@ module.exports = {
             songId = songId.dataValues.favoriteSongid;
 
 
-            //TODO change 
+            //TODO change error code
             //normalerweise find or create aber ich hatte keine Lust TODO: vlt ändern
             const alreadyInDb= await  userMatch.findOne({where:{Userid: userId, Userid2: otherUserId}})
             if (alreadyInDb) {
@@ -141,7 +141,7 @@ module.exports = {
             }
 
             if (songRet.length === 0) {
-                res.status(200).send({msg: "Better start swipping now, you have not matching songs"})
+                res.status(200).send({msg: "Better start swipping now, you have no matching songs"})
             } else {
                 res.status(200).send(songRet)
             }
