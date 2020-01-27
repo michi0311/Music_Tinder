@@ -10,14 +10,14 @@
     this.name = name;
     this.email = email;
     this.birthday = birthday;
-   // this.password = password;
+    // this.password = password;
   }
 
-  public setSong(songId: number){
+  public setSong(songId: number) {
     this.favoriteSongid = songId;
   }
 
-  public setText(text: string){
+  public setText(text: string) {
     this.songDescription = text;
   }
 }

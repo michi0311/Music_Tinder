@@ -10,6 +10,7 @@ import {SongSearchComponent} from './profile/music/song-search/song-search.compo
 import {SongSwipingComponent} from './song-swiping/song-swiping.component';
 import {SettingsComponent} from './profile/settings/settings.component';
 import {PersSettingsComponent} from './profile/settings/pers-settings/pers-settings.component';
+import {UserMatchComponent} from './profile/user-match/user-match.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path: '', component: SongSwipingComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-
+  {path: 'matches', component: UserMatchComponent},
 
   // { path: '', redirectTo: '/song-list', pathMatch: 'full' },
   {path: 'song-list', component: SongListComponent},

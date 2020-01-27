@@ -25,6 +25,7 @@ import {AlertComponent} from './authentification/alert/alert.component';
 
 import {JwtInterceptor} from './authentification/helpers/jwt.interceptor';
 import {ErrorInterceptor} from "./authentification/helpers/error.interceptor";
+import { UserMatchComponent } from './profile/user-match/user-match.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {ErrorInterceptor} from "./authentification/helpers/error.interceptor";
     RegisterComponent,
     LoginComponent,
     AlertComponent,
-    PersSettingsComponent
+    PersSettingsComponent,
+    UserMatchComponent
   ],
   imports: [
     BrowserModule,

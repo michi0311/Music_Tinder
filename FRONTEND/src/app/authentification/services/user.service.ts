@@ -15,9 +15,11 @@ export class UserService {
   }
 
   update(user) {
-    let url= "http://localhost:3030/api/user";
+    let url = "http://localhost:3030/api/user";
     let myHeader = this.getHeader();
-    return this.http.patch(url,user, JSON.parse(myHeader));
+    const body = {name: user.name, email: user.email, songDescription: user.songDescription};
+    console.log(body);
+    return this.http.patch(url, body, JSON.parse(myHeader));
   }
 
   register(user) {
