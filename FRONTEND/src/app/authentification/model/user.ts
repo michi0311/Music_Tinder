@@ -2,8 +2,8 @@
   name: string;
   email: string;
   birthday: string;
-  songId: number;
-  text: string;
+  favoriteSongid: number;
+  songDescription: string;
   token: string;
 
   constructor(name: string, email: string, birthday: string, password: string) {
@@ -14,10 +14,10 @@
   }
 
   public setSong(songId: number){
-    this.songId = songId;
+    this.favoriteSongid = songId;
   }
 
   public setText(text: string){
-    this.text = text;
+    this.songDescription = text;
   }
 }

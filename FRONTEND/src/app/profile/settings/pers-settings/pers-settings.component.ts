@@ -4,6 +4,7 @@ import {MusicServiceService} from '../../music/music-service.service';
 import {AuthenticationService} from '../../../authentification/services/authentication.service';
 import {User} from '../../../authentification/model/user';
 import {UserService} from "../../../authentification/services/user.service";
+import { MessageUtil } from 'src/app/message-util';
 
 @Component({
   selector: 'app-pers-settings',
@@ -24,11 +25,11 @@ export class PersSettingsComponent implements OnInit {
     this.userServ.update(this.person)
       .subscribe(
         data => {
-          console.log(data);
-          
+          console.log(data); 
+           MessageUtil.showMessage("update successful")
         },
         err => console.error(err),
-        () => console.log('done loading foods')
+        () => console.log('done updating')
       );
   }
 
