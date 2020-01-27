@@ -7,15 +7,31 @@ module.exports = (sequelize, DataTypes) => {
         Userid: {
             type: DataTypes.INTEGER(12),
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            references: {
+                model: sequelize.models.User,
+                key: "id"
+            }
         },
         Userid2: {
             type: DataTypes.INTEGER(12),
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            references: {
+                model: sequelize.models.User,
+                key: "id"
+            }
         },
         isMatch: {
             type: DataTypes.BOOLEAN()
+        },
+        Songid: {
+            type: DataTypes.INTEGER(12),
+            allowNull: false,
+            references: {
+                model: sequelize.models.Song,
+                key: "id"
+            }
         }
     },{
         timestamps: false,

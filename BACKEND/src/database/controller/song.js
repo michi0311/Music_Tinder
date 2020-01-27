@@ -23,6 +23,12 @@ module.exports = {
                 return res.status(400).send({ error: "No iTunes ID provided" })
             }
 
+            const songAllreadyAdded = await song.findOne({where: {iTunesID: req.body.iTunesID}})
+            if (songAllreadyAdded) {
+                return res.status(200).send({msg: "Song already added", song: songAllreadyAdded})
+            }
+
+
             const songCollection = await song.create({
                 songName: req.body.songName,
                 URL: req.body.URL,

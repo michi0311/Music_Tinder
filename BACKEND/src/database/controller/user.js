@@ -20,11 +20,14 @@ module.exports = {
                 return res.status(400).send({ error: "No Age provided" })
             } 
 
+            //TODO change the favorrite song id
             const userCollection = await user.create({
                 name: req.body.name,
                 email: req.body.email,
                 password: await hashTool.createHash(req.body.password),
-                birthday: req.body.birthday
+                birthday: req.body.birthday,
+                songDescription: req.body.songDescription,
+                favoriteSongid: req.body.favoriteSongid || null
             });
             if (!userCollection) {
                 return res.status(400).send({ error: 'User creation unsuccesfull' })
@@ -57,6 +60,10 @@ module.exports = {
         try {
             const UidCollection = await user.findAll({attributes: ["id"]});
             let id = Math.floor(Math.random() * UidCollection.length)
+            // if id == req.user id retry
+            while (UidCollection[id] == req.user.id) {
+                id = Math.floor(Math.random() * UidCollection.length)
+            }
             let UID = UidCollection[id];
             let userCollection = await user.findByPk(parseInt(UID["id"]));
             
@@ -93,13 +100,14 @@ module.exports = {
             // TODO only a User can update itself
             const _id = req.user.id;
             const updates = Object.keys(req.body);
-            const allowedUpdates = ["name", "email", "password", "birthday", "password"];
+            const allowedUpdates = ["name", "email", "password", "birthday", "password","songDescription","favoriteSongid"];
             const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
             if (!isValidOperation) {
                 return res.status(400).send({ error: "Invalid Updates" })
             }
 
+            //TODO modify for song id change
             let userCollection = await user.findByPk(parseInt(_id));
             if (!userCollection) {
                 return res.status(404).send({ msg: "User not found" });

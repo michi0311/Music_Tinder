@@ -29,6 +29,16 @@ module.exports = (sequelize, DataTypes) => {
         birthday: {
             type: DataTypes.DATEONLY()
         },
+        songDescription: {
+            type: DataTypes.STRING(250)
+        },
+        favoriteSongid: {
+            type: DataTypes.INTEGER(12),
+            references: {
+                model: sequelize.models.Song,
+                key: "id"
+            }
+        }
     },{
         timestamps: false,
         freezeTableName: true
