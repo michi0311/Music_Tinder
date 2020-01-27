@@ -1,38 +1,68 @@
-ion-content {
-  --background: #ccc url("../../../assets/images/backimage.jpg") no-repeat center center / cover;
-  background-size: contain;
-  text-align: center;
+.sign-up-title{
+  color: white;
+  margin-bottom: 80px;
+  font-size: xx-large;
 }
+/*.error-message{*/
+/*  background-color: white;*/
+/*}*/
 
-.right {
-  text-align: right;
-}
-
-.right a{
+.validation-errors{
   color: white;
 }
 
+/*.ion-activatable{*/
+/*  background: white;*/
+/*}*/
+
+ion-content {
+  --background: linear-gradient(#1f8698, #0c2c34);
+  text-align: center !important;
+}
+
 .logo{
-  background-color: transparent !important;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
-.error-message{
-  background-color: white;
+ion-item {
+  --border-radius:50px;
+  --inner-padding-start:20px;
+  --inner-padding-end:20px;
+  --inner-padding-top:0px;
+  --padding-bottom: 0px;
+  --padding-top: 0px;
+  margin-top: 20px;
 }
 
-ion-button{
-  margin: 20px 0 0 0;
-  border: none;
+.submit-button {
+  margin-top: 30px;
+  --background: #10efe6;
+  --padding-bottom: 26px;
+  --padding-top: 26px;
+}
+
+.sign-note{
+  margin-top:20%;
+  color: white;
+}
+
+.sign-in-button{
+  --padding-bottom: 22px;
+  --padding-top: 22px;
+  --border-color: #10efe6;
+  --color: #10efe6;
+  margin-bottom: 10px;
+}
+
+ion-input{
+  --padding-top: -50px !important;
+  --padding-bottom: -50px !important;
+  --padding-start: 50px;
+  font-size: x-large;
 }
 
 ion-card{
-  top:5%;
   box-shadow: none;
-  bottom: 30px;
+  max-width: 800px;
 }
-
-.ion-activatable{
-  background: white;
-}
-
-
