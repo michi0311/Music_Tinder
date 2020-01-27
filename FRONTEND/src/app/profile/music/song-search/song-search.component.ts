@@ -5,6 +5,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {ToastController} from '@ionic/angular';
 import {MessageUtil} from '../../../message-util';
 import {ITunesWebApi} from '../i-tunes-web-api';
+import { Song } from '../song';
+
 
 @Component({
   selector: 'app-song-search',
@@ -30,12 +32,26 @@ export class SongSearchComponent implements OnInit {
       );
   }
   addSong(result) {
+
+
+    //first add song to DB
     this.musicService.addSong(result)
       .subscribe(
-        async  data => {
-          MessageUtil.showMessage('set song'); } ,
+        async  (data: Song) => {
+          //if ok -> set song as users profile-song
+          this.musicService.setSong(data)
+          .subscribe(
+            async  (data) => {
+              MessageUtil.showMessage('set song'); } ,
+            err => console.error(err),
+            () => console.log('done set song')
+          );
+           } ,
         err => console.error(err),
-        () => console.log('done loading foods')
+        () => console.log('done set songs')
       );
   }
+
+ 
+
 }

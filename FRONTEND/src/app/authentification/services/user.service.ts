@@ -15,10 +15,9 @@ export class UserService {
   }
 
   update(user) {
-    const token = this.auth.getToken();
-    const header = `{"headers" :  {"Authorization":"Bearer ${token}"}}`;
-    log(user.id, user.email);
-    return this.http.patch('http://localhost:3030/api/user', user, JSON.parse(header));
+    let url= "http://localhost:3030/api/user";
+    let myHeader = this.getHeader();
+    return this.http.patch(url,user, JSON.parse(myHeader));
   }
 
   register(user) {
@@ -28,4 +27,10 @@ export class UserService {
   delete(id: number) {
     return this.http.delete(`/users/${id}`);
   }
+
+  private getHeader() {
+    let token = this.auth.getToken();
+    return `{"headers" :  {"Authorization":"Bearer ${token}"}}`;
+  }
+
 }
