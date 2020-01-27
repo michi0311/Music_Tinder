@@ -1,15 +1,23 @@
 ﻿import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from "../model/user";
+import {User} from '../model/user';
+import {AuthenticationService} from './authentication.service';
+import {log} from "util";
 
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthenticationService) {
   }
 
   getAll() {
     return this.http.get<User[]>(`/users`);
+  }
+
+  update(user) {
+    let url= "http://localhost:3030/api/user";
+    let myHeader = this.getHeader();
+    return this.http.patch(url,user, JSON.parse(myHeader));
   }
 
   register(user) {
@@ -19,4 +27,10 @@ export class UserService {
   delete(id: number) {
     return this.http.delete(`/users/${id}`);
   }
+
+  private getHeader() {
+    let token = this.auth.getToken();
+    return `{"headers" :  {"Authorization":"Bearer ${token}"}}`;
+  }
+
 }
