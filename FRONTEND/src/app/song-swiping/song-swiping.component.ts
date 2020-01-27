@@ -54,24 +54,32 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.userName = this.randomUser.user.name;
           this.userAge = this.getAge(this.randomUser.user.birthday);
           this.userId = this.randomUser.user.id;
+          this.songId = this.randomUser.user.favoriteSongid;
+          this.comment = this.randomUser.user.songDescription;
           console.log('Fetched User: ' + this.userName + ' ' + this.userId);
+          console.log(this.randomUser);
+          console.log(this.songId);
+          this.getSong();
         },
         err => console.error(err)
       );
 
-    this.songService.getSong(Math.random() * 1000)
+
+  }
+
+  private getSong() {
+    this.songService.getSong(this.songId)
       .subscribe(
         data => {
+          console.log(this.randomSong);
           this.randomSong = data;
           this.songUrl = this.randomSong.user.URL;
           this.songName = this.randomSong.user.songName;
           this.songCover = this.randomSong.user.artworkURL;
           this.songArtist = this.randomSong.user.artistName;
           this.songGenre = this.randomSong.user.genre;
-          this.songId = this.randomSong.user.id;
           this.album = this.randomSong.user.collectionName;
-          this.comment = 'Ich liebe diesen Song, weil ich ihn in meiner Kindheit sehr oft gehört habe';
-          console.log(this.randomSong);
+
 
           // let the song play
           this.audio = new Howl({
@@ -93,7 +101,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
         },
         error => console.log(error));
   }
-
 
   // pauses song, when it plays, plays song when it's paused
   pausePlaySong(): void {
@@ -126,17 +133,15 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       data => {
         const userHate = data;
         console.log('User called hateSong');
-        console.log(userHate);
-        console.log('This was the Result');
-        if (this.isPlaying == false) {
-          this.changeButtonPlay();
-        }
-        this.audio.stop();
-        this.ngOnInit();
       },
-      err => console.log('hate went wrong'),
+      err => console.error(err),
       () => console.log('done getting hate')
     );
+    if (this.isPlaying === false) {
+      this.changeButtonPlay();
+    }
+    this.audio.stop();
+    this.ngOnInit();
   }
 
   loveSong() {
@@ -145,17 +150,15 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
         data => {
           const userMatch = data;
           console.log('User called loveSong');
-          console.log(userMatch);
-          console.log('This was the Result');
-          if (this.isPlaying == false) {
-            this.changeButtonPlay();
-          }
-          this.audio.stop();
-          this.ngOnInit();
         },
         err => console.log('love went wrong'),
         () => console.log('done getting love')
       );
+    if (this.isPlaying === false) {
+      this.changeButtonPlay();
+    }
+    this.audio.stop();
+    this.ngOnInit();
   }
 
   // HTML changing methods
