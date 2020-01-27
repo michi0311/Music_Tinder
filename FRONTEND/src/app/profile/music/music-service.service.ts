@@ -41,5 +41,10 @@ export class MusicServiceService {
     return `{"headers" :  {"Authorization":"Bearer ${token}"}}`;
   }
 
+  private getMatches(){
+    let myHeader = this.getHeader();
+    return this.http.get('http://localhost:3030/api/user/matches',JSON.parse(myHeader));
+  }
+
 
 }
