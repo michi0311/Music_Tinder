@@ -5,6 +5,7 @@ const path = require("path")
 const user = require('../models/index').User;
 const hashTool = require(path.normalize("../helpers/hashTool"));
 const validator = require("validator");
+const hatedSongs = require(path.normalize('../models/index')).hatedSong;
 
 
 module.exports = {
@@ -60,12 +61,22 @@ module.exports = {
         try {
             const UidCollection = await user.findAll({attributes: ["id"]});
             let id = Math.floor(Math.random() * UidCollection.length)
+
+            const hatedSongsColl = await hatedSongs.findAll({where: {userID: req.user.id}})
+            let shittySongs = []
+            hatedSongsColl.forEach(element => {
+                shittySongs.push(element.dataValues.songID)
+            });
+            
+            let userCollection = await user.findByPk(UidCollection[id].id)
             // if id == req.user id retry
-            while (UidCollection[id] == req.user.id) {
+            while (userCollection.dataValues.id == req.user.id || shittySongs.includes(userCollection.dataValues.favoriteSongid)) {
                 id = Math.floor(Math.random() * UidCollection.length)
+                let UID = UidCollection[id];
+                userCollection = await user.findByPk(parseInt(UID["id"]));
             }
-            let UID = UidCollection[id];
-            let userCollection = await user.findByPk(parseInt(UID["id"]));
+
+            
             
             if (!userCollection) {
                 return res.status(400).send({ error: 'User creation unsuccesfull' })
