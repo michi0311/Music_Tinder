@@ -1,9 +1,9 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Howl} from 'howler';
-import {SongSwipingService} from "./song-swiping.service";
+import {SongSwipingService} from './song-swiping.service';
 import {ToastController} from '@ionic/angular';
-import {stringify} from "querystring";
-import {logger} from "codelyzer/util/logger";
+import {stringify} from 'querystring';
+import {logger} from 'codelyzer/util/logger';
 
 @Component({
   selector: 'app-song-swiping',
@@ -13,39 +13,39 @@ import {logger} from "codelyzer/util/logger";
 
 export class SongSwipingComponent implements OnInit, OnDestroy {
   public randomUser;
-  public userName: string = "Name";
-  public userAge: number = 10;
-  public userId: number = -1;
+  public userName = 'Name';
+  public userAge = 10;
+  public userId = -1;
   public randomSong;
   public songUrl: string;
-  public songCover:string;
-  public songArtist:string;
-  public songName:string;
-  public album:string;
-  public songId:number = -1;
-  public songGenre:string;
+  public songCover: string;
+  public songArtist: string;
+  public songName: string;
+  public album: string;
+  public songId = -1;
+  public songGenre: string;
   public audio: Howl;
-  public comment: string = "My favourite Song";
-  public isPlaying: boolean = false;
+  public comment = 'My favourite Song';
+  public isPlaying = false;
 
   constructor(public songService: SongSwipingService, public toastCtrl: ToastController) {
   }
 
-  //At start - fetch Random User and play his/her song
+  // At start - fetch Random User and play his/her song
   ngOnInit(): void {
     this.getRandomSong();
   }
 
-  //stop Song when switching Route
+  // stop Song when switching Route
   ngOnDestroy() {
     try {
-      this.audio.stop()
+      this.audio.stop();
     } catch (e) {
 
     }
   }
 
-//get random user with his/her titlesong and play it in the browser
+// get random user with his/her titlesong and play it in the browser
   getRandomSong() {
     this.songService.getRandomUser()
       .subscribe(
@@ -54,7 +54,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.userName = this.randomUser.user.name;
           this.userAge = this.getAge(this.randomUser.user.birthday);
           this.userId = this.randomUser.user.id;
-          console.log("Fetched User: " + this.userName + " " + this.userId);
+          console.log('Fetched User: ' + this.userName + ' ' + this.userId);
         },
         err => console.error(err)
       );
@@ -70,18 +70,18 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.songGenre = this.randomSong.user.genre;
           this.songId = this.randomSong.user.id;
           this.album = this.randomSong.user.collectionName;
-          this.comment = "Ich liebe diesen Song, weil ich ihn in meiner Kindheit sehr oft gehört habe";
+          this.comment = 'Ich liebe diesen Song, weil ich ihn in meiner Kindheit sehr oft gehört habe';
           console.log(this.randomSong);
 
-          //let the song play
+          // let the song play
           this.audio = new Howl({
-            src: ["" + this.songUrl]
+            src: ['' + this.songUrl]
           });
 
-          //Gottes Gabe
-          var self = this;
-          //gets invoked, when audio ends
-          this.audio.on('end', function () {
+          // Gottes Gabe
+          const self = this;
+          // gets invoked, when audio ends
+          this.audio.on('end', function() {
             self.changeButtonPause();
             self.isPlaying = false;
           });
@@ -95,7 +95,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   }
 
 
-  //pauses song, when it plays, plays song when it's paused
+  // pauses song, when it plays, plays song when it's paused
   pausePlaySong(): void {
     if (this.isPlaying) {
       this.audio.pause();
@@ -104,37 +104,37 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
     } else {
       this.audio.play();
       this.isPlaying = true;
-      this.changeButtonPlay()
+      this.changeButtonPlay();
     }
-    console.log("User called pausePlaySong()");
+    console.log('User called pausePlaySong()');
   }
 
   repeatSong(): void {
     this.audio.stop();
     if (this.isPlaying == false) {
-      this.changeButtonPlay()
+      this.changeButtonPlay();
     }
     this.isPlaying = true;
     this.audio.play();
-    console.log("User called repeatSong()")
+    console.log('User called repeatSong()');
   }
 
-  //Switching to next Song - ngOnInit-Function gets called
+  // Switching to next Song - ngOnInit-Function gets called
   hateSong() {
     this.songService.sethate(this.userId)
       .subscribe(
       data => {
-        let userHate = data;
-        console.log("User called hateSong");
+        const userHate = data;
+        console.log('User called hateSong');
         console.log(userHate);
-        console.log("This was the Result");
+        console.log('This was the Result');
         if (this.isPlaying == false) {
-          this.changeButtonPlay()
+          this.changeButtonPlay();
         }
         this.audio.stop();
-        this.ngOnInit()
+        this.ngOnInit();
       },
-      err => console.log("hate went wrong"),
+      err => console.log('hate went wrong'),
       () => console.log('done getting hate')
     );
   }
@@ -143,36 +143,36 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
     this.songService.setlove(this.userId)
       .subscribe(
         data => {
-          let userMatch = data;
-          console.log("User called loveSong");
+          const userMatch = data;
+          console.log('User called loveSong');
           console.log(userMatch);
-          console.log("This was the Result");
+          console.log('This was the Result');
           if (this.isPlaying == false) {
-            this.changeButtonPlay()
+            this.changeButtonPlay();
           }
           this.audio.stop();
-          this.ngOnInit()
+          this.ngOnInit();
         },
-        err => console.log("love went wrong"),
+        err => console.log('love went wrong'),
         () => console.log('done getting love')
       );
   }
 
-  //HTML changing methods
+  // HTML changing methods
   changeButtonPause(): void {
-    document.getElementById("Pause/Play").innerHTML = "Play";
-    document.getElementById("Pause/PlayIcon").setAttribute("name", "play")
+    document.getElementById('Pause/Play').innerHTML = 'Play';
+    document.getElementById('Pause/PlayIcon').setAttribute('name', 'play');
   }
 
   changeButtonPlay(): void {
-    document.getElementById("Pause/Play").innerHTML = "Pause";
-    document.getElementById("Pause/PlayIcon").setAttribute("name", "pause")
+    document.getElementById('Pause/Play').innerHTML = 'Pause';
+    document.getElementById('Pause/PlayIcon').setAttribute('name', 'pause');
   }
 
   // event, that triggers the information-toast
   async openToast() {
     const toast = await this.toastCtrl.create({
-      header: this.userName + " (" + this.userAge + ") : ",
+      header: this.userName + ' (' + this.userAge + ') : ',
       message: this.getToast(),
       buttons: [
         {
@@ -183,26 +183,26 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           }
         }
       ],
-      color: "primary",
-      position: "middle",
+      color: 'primary',
+      position: 'middle',
 
     });
     toast.present();
   }
 
-  //content of the information-toast
+  // content of the information-toast
   getToast() {
-    return "Here you could see more informations about the user. What are his oder her hobbies, living place ect. <br> " +
-      "It is also possible to read something about the song, where it is from, or another further informations" + "<br> <br> <strong> Title: </strong>" + this.songName +
-      "<br> <strong> Artist: </strong>" + this.songArtist + "<br> <strong> Genre: </strong>" + this.songGenre;
+    return 'Here you could see more informations about the user. What are his oder her hobbies, living place ect. <br> ' +
+      'It is also possible to read something about the song, where it is from, or another further informations' + '<br> <br> <strong> Title: </strong>' + this.songName +
+      '<br> <strong> Artist: </strong>' + this.songArtist + '<br> <strong> Genre: </strong>' + this.songGenre;
   }
 
-  //calculate Age
+  // calculate Age
   getAge(birthday) {
-    var today = new Date();
-    var birthDate = new Date(birthday);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
+    const today = new Date();
+    const birthDate = new Date(birthday);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }

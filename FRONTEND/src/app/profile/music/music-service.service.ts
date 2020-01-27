@@ -28,4 +28,14 @@ export class MusicServiceService {
     //log(songExport);
     return this.http.post('http://localhost:3030/api/song/', songExport, {});
   }
+
+  public updateUser(User){
+
+  }
+
+  public setSong(song) {
+  return null;
+  }
+
+
 }
