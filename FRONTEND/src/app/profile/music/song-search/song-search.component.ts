@@ -34,11 +34,14 @@ export class SongSearchComponent implements OnInit {
   addSong(result) {
 
 
+
+
     //first add song to DB
     this.musicService.addSong(result)
       .subscribe(
         async  (data: Song) => {
           //if ok -> set song as users profile-song
+
           this.musicService.setSong(data)
           .subscribe(
             async  (data) => {
@@ -52,6 +55,6 @@ export class SongSearchComponent implements OnInit {
       );
   }
 
- 
+
 
 }
