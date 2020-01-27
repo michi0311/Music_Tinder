@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MusicServiceService} from "../music/music-service.service";
+import {MessageUtil} from "../../message-util";
 
 @Component({
   selector: 'app-user-match',
@@ -10,12 +11,16 @@ export class UserMatchComponent implements OnInit {
 
   users;
 
-  constructor(private musicService: MusicServiceService) { }
+  constructor(private musicService: MusicServiceService) {
+
+    this.getMatches();
+  }
 
   ngOnInit() {
   }
 
-  getSongs() {
+  getMatches() {
+    console.log('gettin match')
     this.musicService.getMatches()
       .subscribe(
         data => {
@@ -25,6 +30,9 @@ export class UserMatchComponent implements OnInit {
         err => console.error(err),
         () => console.log('done loading foods')
       );
+  }
+  chat(){
+    MessageUtil.showMessage("not implemented yet");
   }
 
 }

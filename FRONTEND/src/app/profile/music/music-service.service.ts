@@ -52,7 +52,7 @@ export class MusicServiceService {
 
   public getMatches() {
     const myHeader = this.getHeader();
-    return this.http.get('http://localhost:3030/api/match/users', JSON.parse(myHeader));
+    return this.http.get('http://localhost:3030/api/match/user', JSON.parse(myHeader));
   }
 
 

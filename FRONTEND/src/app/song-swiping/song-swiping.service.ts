@@ -18,8 +18,8 @@ export class SongSwipingService {
   }
 
   public  getSong(sid:number) {
-    log('call service getSong');
-    let url = `http://localhost:3030/api/song/${sid}`;
+    console.log('call service getSong');
+    let url = 'http://localhost:3030/api/song/' + sid;
     return this.http.get(url);
   }
 
@@ -30,9 +30,9 @@ export class SongSwipingService {
   }
 
   public sethate(uid:number) {
-    let url= "http://localhost:3030/api/match/" +uid;
+    let url= "http://localhost:3030/api/match/dislike" +uid;
     let myHeader = this.getHeader();
-    return this.http.delete(url, JSON.parse(myHeader));
+    return this.http.post(url, JSON.parse(myHeader));
   }
 
   private getHeader() {
