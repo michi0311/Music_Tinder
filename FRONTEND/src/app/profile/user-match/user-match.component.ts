@@ -20,7 +20,7 @@ export class UserMatchComponent implements OnInit {
   }
 
   getMatches() {
-    console.log('gettin match')
+    console.log('gettin match');
     this.musicService.getMatches()
       .subscribe(
         data => {
@@ -28,7 +28,7 @@ export class UserMatchComponent implements OnInit {
           this.users = data;
         },
         err => console.error(err),
-        () => console.log('done loading foods')
+        () => console.log('done loading matches')
       );
   }
   chat(){
