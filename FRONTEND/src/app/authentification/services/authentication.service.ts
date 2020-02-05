@@ -26,7 +26,6 @@ export class AuthenticationService {
   }
 
   public get currentUserValue(): User {
-    //const temp = this.currentUserSubject.value;
     return this.currentUserSubject.value;
   }
 
@@ -42,5 +41,19 @@ export class AuthenticationService {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+  }
+
+  setFavoriteSongidLocaleStorage(songid) {
+    var user = JSON.parse(localStorage.getItem("currentUser"));
+    user.favoriteSongid = songid;
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    this.currentUserSubject.next(user)
+  }
+
+  setSongDescriptionLocaleStorage(descr) {
+    var user = JSON.parse(localStorage.getItem("currentUser"));
+    user.songDescription = descr;
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    this.currentUserSubject.next(user)
   }
 }
