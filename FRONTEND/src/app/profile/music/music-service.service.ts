@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {HttpClientModule} from "@angular/common/http";
 import {Song} from './song';
 import {ResultsEntity} from './i-tunes-web-api';
 import {AuthenticationService} from 'src/app/authentification/services/authentication.service';
@@ -23,7 +24,8 @@ export class MusicServiceService {
   }
 
   public searchSongs(term: string) {
-    return this.http.get('https://itunes.apple.com/search?term=' + term + '&entity=musicTrack&limit=20&attribute=songTerm');
+    const myCORSHeader = this.getCORSHeader();
+    return this.http.get('http://localhost:3030/api/song/apple/'+ term );
   }
 
   // @ts-ignore
@@ -42,6 +44,11 @@ export class MusicServiceService {
   private getHeader() {
     const token = this.auth.getToken();
     return `{"headers" :  {"Authorization":"Bearer ${token}"}}`;
+  }
+
+  private getCORSHeader() {
+    const CORS = '"Access-Control-Allow-Origin" : "https://itunes.apple.com"';
+    return `{"headers" :  {${CORS}}}`;
   }
 
   public getMatches() {

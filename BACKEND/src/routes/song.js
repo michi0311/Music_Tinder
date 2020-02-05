@@ -12,6 +12,7 @@ router.post('/',SongController.create);
 
 router.get('/',SongController.getAllSongs);
 router.get('/:id',SongController.getSongById);
+router.get('/apple/:term', SongController.getAppleSong)
 
 router.delete('/:id',SongController.deleteSong)
 

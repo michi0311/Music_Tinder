@@ -67,6 +67,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.userId = this.randomUser.user.id;
           this.songId = this.randomUser.user.favoriteSongid;
           this.comment = this.randomUser.user.songDescription;
+          console.log(this.randomUser.user.name);
           this.getSong();
         },
         err => console.error(err)
@@ -77,13 +78,10 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
 
   private getSong() {
     if (this.songId === null) {
-      this.audio = undefined;
+      console.log("Song is undefined");
+      console.log(this.songName);
       this.ngOnInit()
     } else {
-      this.audio = new Howl({
-        src: ['' + this.songUrl]
-      });
-    }
     this.songService.getSong(this.songId)
       .subscribe(
         data => {
@@ -98,13 +96,14 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
 
           // let the song play
           if (this.songUrl.includes("video-ssl")) {
-            this.audio = undefined;
+            console.log("Song is a Video");
+            console.log(this.songName);
             this.ngOnInit()
-          } else {
+          }
             this.audio = new Howl({
               src: ['' + this.songUrl]
             });
-          }
+
 
           // Gottes Gabe
           const self = this;
@@ -120,7 +119,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
 
         },
         error => console.log(error));
-  }
+  }}
 
   // pauses song, when it plays, plays song when it's paused
   pausePlaySong(): void {
