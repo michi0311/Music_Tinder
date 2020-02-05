@@ -26,11 +26,9 @@ export class PersSettingsComponent implements OnInit {
   }
 
   public update() {
-    console.log(JSON.stringify(this.person));
     this.userServ.update(this.person)
       .subscribe(
         data => {
-          console.log(data)
           if (data['user'].songDescription != null) {
             this.auth.setSongDescriptionLocaleStorage(data['user'].songDescription);
           }

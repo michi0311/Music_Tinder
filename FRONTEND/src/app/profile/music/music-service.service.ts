@@ -34,16 +34,13 @@ export class MusicServiceService {
   public addSong(song: ResultsEntity) {
     // tslint:disable-next-line:max-line-length
     const songExport = new Song(1, song.trackName, song.artistName, song.collectionName, song.previewUrl, song.artworkUrl60, song.trackId.toString(), song.primaryGenreName, 0, 0);
-    console.log(songExport);
     return this.http.post('http://localhost:3030/api/song/', songExport, {});
   }
 
   public setSong(song) {
     const url = 'http://localhost:3030/api/user';
     const myHeader = this.getHeader();
-    console.log(song);
     const body = {favoriteSongid: song.song.id};
-    console.log(body);
     return this.http.patch(url, body, JSON.parse(myHeader));
   }
 

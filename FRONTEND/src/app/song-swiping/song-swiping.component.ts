@@ -67,9 +67,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.userId = this.randomUser.user.id;
           this.songId = this.randomUser.user.favoriteSongid;
           this.comment = this.randomUser.user.songDescription;
-          console.log('Fetched User: ' + this.userName + ' ' + this.userId);
-          console.log(this.randomUser);
-          console.log(this.songId);
           this.getSong();
         },
         err => console.error(err)
@@ -81,7 +78,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   private getSong() {
     if (this.songId === null) {
       this.audio = undefined;
-      console.error("Song is undefined");
       this.ngOnInit()
     } else {
       this.audio = new Howl({
@@ -92,7 +88,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           this.randomSong = data;
-          console.log(this.randomSong);
           this.songUrl = this.randomSong.user.URL;
           this.songName = this.randomSong.user.songName;
           this.songCover = this.randomSong.user.artworkURL;
@@ -104,7 +99,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           // let the song play
           if (this.songUrl.includes("video-ssl")) {
             this.audio = undefined;
-            console.error("Song is a Video");
             this.ngOnInit()
           } else {
             this.audio = new Howl({
@@ -139,7 +133,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       this.isPlaying = true;
       this.changeButtonPlay();
     }
-    console.log('User called pausePlaySong()');
   }
 
   repeatSong(): void {
@@ -149,7 +142,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
     }
     this.isPlaying = true;
     this.audio.play();
-    console.log('User called repeatSong()');
   }
 
   // Switching to next Song - ngOnInit-Function gets called
@@ -158,7 +150,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           const userHate = data;
-          console.log('User called hateSong');
         },
         err => console.error(err),
         () => console.log('done getting hate')
@@ -175,7 +166,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           const userMatch = data;
-          console.log('User called loveSong');
         },
         err => console.error(err),
         () => console.log('done getting love')

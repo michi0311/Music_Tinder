@@ -19,11 +19,9 @@ export class UserMatchComponent implements OnInit {
   }
 
   getMatches() {
-    console.log('gettin match');
     this.musicService.getMatches()
       .subscribe(
         data => {
-          console.log(data);
           this.users = data;
         },
         err => console.error(err),

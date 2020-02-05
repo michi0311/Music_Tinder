@@ -31,7 +31,6 @@ export class SongSearchComponent implements OnInit {
     this.musicService.searchSongs(term)
       .subscribe(
         (data: ITunesWebApi) => {
-          console.log(data);
           this.results = data;
         },
         err => console.error(err),

@@ -22,7 +22,6 @@ export class SongSwipingService {
   }
 
   public getSong(sid: number) {
-    console.log('call service getSong');
     let url = 'http://localhost:3030/api/song/' + sid;
     return this.http.get(url);
   }

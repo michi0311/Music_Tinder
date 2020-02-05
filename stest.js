@@ -52,8 +52,6 @@ document.addEventListener('musickitloaded', () => {
           Returns a promise which resolves with a music-user-token when a user successfully authenticates and authorizes
           https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance/2992701-authorize
         ***/
-       console.log("fuck");
-       alert("fuck")
        
         music.authorize().then(musicUserToken => {
           console.log(`Authorized, music-user-token: ${musicUserToken}`);

@@ -27,11 +27,9 @@ export class SongListComponent implements OnInit {
   }
 
   getSongs() {
-    console.log("getting songs");
     this.musicService.getSongs()
       .subscribe(
         data => {
-          console.log(data);
           this.songs = data;
         },
         err => console.error(err),
