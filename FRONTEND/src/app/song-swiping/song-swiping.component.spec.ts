@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {SongSwipingComponent} from './song-swiping.component';
 
 describe('SongSwipingComponent', () => {

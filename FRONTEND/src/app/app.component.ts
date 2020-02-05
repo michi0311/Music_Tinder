@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {IonMenu} from "@ionic/angular";
 import {AuthenticationService} from "./authentification/services/authentication.service";
 import {User} from "./authentification/model/user";
 import {Router} from "@angular/router";

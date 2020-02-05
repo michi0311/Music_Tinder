@@ -1,13 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {CommonModule} from '@angular/common';
-import {switchMap} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {MusicServiceService} from '../music-service.service';
-// tslint:disable-next-line:import-spacing
-import {Song} from '../song';
-import {log} from 'util';
-import {ITunesWebApi} from '../i-tunes-web-api';
 
 @Component({
   selector: 'app-song-list',

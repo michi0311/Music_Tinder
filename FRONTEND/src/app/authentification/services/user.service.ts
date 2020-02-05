@@ -2,7 +2,6 @@
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user';
 import {AuthenticationService} from './authentication.service';
-import {log} from "util";
 
 
 @Injectable({providedIn: 'root'})

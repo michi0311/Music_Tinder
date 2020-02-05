@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from '../../music/person';
 import {MusicServiceService} from '../../music/music-service.service';
 import {AuthenticationService} from '../../../authentification/services/authentication.service';
 import {User} from '../../../authentification/model/user';

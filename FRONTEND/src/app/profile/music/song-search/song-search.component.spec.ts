@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {SongSearchComponent} from './song-search.component';
 
 describe('SongSearchComponent', () => {

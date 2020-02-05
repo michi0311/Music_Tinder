@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {PersSettingsComponent} from './pers-settings.component';
 
 describe('PersSettingsComponent', () => {

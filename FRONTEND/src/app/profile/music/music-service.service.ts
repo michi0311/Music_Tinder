@@ -1,13 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Song} from './song';
-import {log} from 'util';
-import {SONGS} from './mock-songs';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {ITunesWebApi, ResultsEntity} from './i-tunes-web-api';
+import {ResultsEntity} from './i-tunes-web-api';
 import {AuthenticationService} from 'src/app/authentification/services/authentication.service';
 import {UserService} from 'src/app/authentification/services/user.service';
-import {computeStackId} from '@ionic/angular/dist/directives/navigation/stack-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +28,6 @@ export class MusicServiceService {
 
   // @ts-ignore
   public addSong(song: ResultsEntity) {
-    // tslint:disable-next-line:max-line-length
     const songExport = new Song(1, song.trackName, song.artistName, song.collectionName, song.previewUrl, song.artworkUrl60, song.trackId.toString(), song.primaryGenreName, 0, 0);
     return this.http.post('http://localhost:3030/api/song/', songExport, {});
   }

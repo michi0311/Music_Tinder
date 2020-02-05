@@ -4,17 +4,9 @@
   font-size: xx-large;
 }
 
-/*.error-message{*/
-/*  background-color: white;*/
-/*}*/
-
 .validation-errors {
   color: white;
 }
-
-/*.ion-activatable{*/
-/*  background: white;*/
-/*}*/
 
 ion-content {
   --background: linear-gradient(#1f8698, #0c2c34);

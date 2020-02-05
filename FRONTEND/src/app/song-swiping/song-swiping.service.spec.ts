@@ -1,5 +1,4 @@
 import {TestBed} from '@angular/core/testing';
-
 import {SongSwipingService} from './song-swiping.service';
 
 describe('SongSwipingService', () => {

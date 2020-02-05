@@ -3,8 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./authentification/login/login.component";
 import {RegisterComponent} from "./authentification/register/register.component";
 import {AuthGuard} from "./authentification/helpers/auth.guard";
-
-// Import all Components, which should get routed
 import {SongListComponent} from './profile/music/song-list/song-list.component';
 import {SongSearchComponent} from './profile/music/song-search/song-search.component';
 import {SongSwipingComponent} from './song-swiping/song-swiping.component';
@@ -18,7 +16,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'matches', component: UserMatchComponent, canActivate: [AuthGuard]},
-
   {path: 'song-list', component: SongListComponent, canActivate: [AuthGuard]},
   {path: 'song-search', component: SongSearchComponent, canActivate: [AuthGuard]},
   {path: 'song-swipe', component: SongSwipingComponent, canActivate: [AuthGuard]},
