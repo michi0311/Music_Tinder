@@ -6,10 +6,6 @@
   --background: #fafafa;
 }
 
-.music-card img:first-child {
-  /*width: 99%*/
-}
-
 .bottom-bar {
   --background: rgba(0, 0, 0, 0.13);
   padding-top: 5px;
@@ -24,14 +20,6 @@
 .hate {
   --color: #d02aaa;
 }
-
-
-/* Responsive Design - Swipefunktion bei Handy */
-/*@media screen and (max-width: 800px) {*/
-/*  .left, .main, .right {*/
-/*    width: 100%; !* The width is 100%, when the viewport is 800px or smaller *!*/
-/*  }*/
-/*}*/
 
 .ion-margin-start {
   padding: 10px;

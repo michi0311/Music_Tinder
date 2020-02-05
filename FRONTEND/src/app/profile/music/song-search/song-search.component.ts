@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MusicServiceService} from '../music-service.service';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {ToastController} from '@ionic/angular';
-import {MessageUtil} from '../../../message-util';
 import {ITunesWebApi} from '../i-tunes-web-api';
 import {Song} from '../song';
 import {AuthenticationService} from "../../../authentification/services/authentication.service";
@@ -31,7 +29,6 @@ export class SongSearchComponent implements OnInit {
     this.musicService.searchSongs(term)
       .subscribe(
         (data: ITunesWebApi) => {
-          console.log(data);
           this.results = data;
         },
         err => console.error(err),

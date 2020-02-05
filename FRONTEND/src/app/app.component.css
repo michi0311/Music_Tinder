@@ -1,7 +1,4 @@
 /* AppComponent's private CSS styles */
-body {
-  /* padding or margin don't work */
-}
 
 h1 {
   color: #3880ff;
@@ -20,7 +17,7 @@ nav a {
   color: black;
 }
 
-ion-title{
+ion-title {
   --color: white;
 }
 
@@ -28,6 +25,7 @@ nav a:hover {
   color: #336b81;
   background-color: #e0e0dc;
 }
+
 nav a.active {
   color: #336b81;
   background-color: #cecece;
@@ -37,12 +35,12 @@ ion-fab {
   padding: 20px;
 }
 
-ion-fab-list ion-fab-button{
+ion-fab-list ion-fab-button {
   border-radius: 30px;
   margin-top: 20px
 }
 
-ion-toolbar{
+ion-toolbar {
   --background: #1c6374;
 }
 
@@ -51,6 +49,6 @@ ion-toolbar{
   --background: linear-gradient(#1c6374, #091a21);
 }
 
-ion-menu-button{
+ion-menu-button {
   --color: white;
 }

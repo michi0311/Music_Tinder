@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from '../../music/person';
 import {MusicServiceService} from '../../music/music-service.service';
 import {AuthenticationService} from '../../../authentification/services/authentication.service';
 import {User} from '../../../authentification/model/user';
@@ -26,11 +25,9 @@ export class PersSettingsComponent implements OnInit {
   }
 
   public update() {
-    console.log(JSON.stringify(this.person));
     this.userServ.update(this.person)
       .subscribe(
         data => {
-          console.log(data)
           if (data['user'].songDescription != null) {
             this.auth.setSongDescriptionLocaleStorage(data['user'].songDescription);
           }
@@ -40,5 +37,4 @@ export class PersSettingsComponent implements OnInit {
         () => console.log('done updating')
       );
   }
-
 }

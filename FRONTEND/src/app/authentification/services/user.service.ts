@@ -2,12 +2,14 @@
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user';
 import {AuthenticationService} from './authentication.service';
-import {log} from "util";
 
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-  constructor(private http: HttpClient, private auth: AuthenticationService) {
+
+  constructor(
+    private http: HttpClient,
+    private auth: AuthenticationService) {
   }
 
   getAll() {

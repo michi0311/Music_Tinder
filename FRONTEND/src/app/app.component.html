@@ -8,24 +8,6 @@
       <img height="70px" class="logo" src="/assets/images/logo.svg" alt="Music Tinder"/>
     </ion-title>
   </ion-toolbar>
-  <!-- fab placed to the top start -->
-  <!---<ion-fab vertical="top" horizontal="start" slot="fixed">
-   <ion-fab-button>
-      <ion-icon name="arrow-dropright"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list>
-      <ion-fab-button color="light">
-        <a routerLink="/song-list" routerLinkActive="active"><ion-icon name="logo-facebook"></ion-icon></a>
-
-    </ion-fab-button>
-    <ion-fab-button color="light">
-      <a routerLink="/song-search" routerLinkActive="active"><ion-icon name="logo-twitter"></ion-icon></a>
-    </ion-fab-button>
-    <ion-fab-button color="light">
-      <a routerLink="/song-swipe" routerLinkActive="active"><ion-icon name="logo-vimeo"></ion-icon></a>
-    </ion-fab-button>
-  </ion-fab-list>
-</ion-fab>-->
   <ion-menu side="start" id="menu" type="overlay">
     <ion-header>
       <ion-toolbar translucent>
@@ -34,7 +16,6 @@
     </ion-header>
     <ion-content>
       <ion-list>
-
         <a routerLink="/song-swipe" routerLinkActive="active" (click)="closeMenu()">
           <ion-item>
             <ion-icon name="heart-half" slot="start"></ion-icon>
@@ -52,7 +33,7 @@
           <ion-item>
             <ion-icon name="musical-note" slot="start"></ion-icon>
             <ion-label>Music I like</ion-label>
-           <!--  <ion-badge slot="end" color="secondary">134</ion-badge> -->
+            <!--  <ion-badge slot="end" color="secondary">134</ion-badge> -->
           </ion-item>
         </a>
         <a routerLink="/settings" routerLinkActive="active" (click)="closeMenu()">
@@ -63,7 +44,7 @@
         </a>
         <a routerLink="/" routerLinkActive="active" (click)="logout()">
           <ion-item>
-            <ion-icon name="logout" slot="start"></ion-icon>
+            <ion-icon name="log-out" slot="start"></ion-icon>
             <ion-label>Logout</ion-label>
           </ion-item>
         </a>

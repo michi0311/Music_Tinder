@@ -1,6 +1,5 @@
-
 <ion-list>
-  <ion-item *ngFor="let result of songs" >
+  <ion-item *ngFor="let result of songs">
     <ion-avatar slot="start">
       <img src="{{result.artworkURL}}">
     </ion-avatar>
@@ -8,11 +7,8 @@
       <h2>{{result.songName}}</h2>
       <h3>{{result.artistName}}</h3>
       <h3>{{result.genre}}</h3>
-
     </ion-label>
-
   </ion-item>
-
 </ion-list>
 
 <div *ngIf="!songs">
