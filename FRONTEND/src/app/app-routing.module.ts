@@ -14,19 +14,16 @@ import {UserMatchComponent} from './profile/user-match/user-match.component';
 
 
 const routes: Routes = [
-  // TODO Albin: Redirecting Default to Login, when not logged in - else Startscreen or Matching Screen
   {path: '', component: SongSwipingComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'matches', component: UserMatchComponent},
+  {path: 'matches', component: UserMatchComponent, canActivate: [AuthGuard]},
 
-  // { path: '', redirectTo: '/song-list', pathMatch: 'full' },
-  {path: 'song-list', component: SongListComponent},
-  {path: 'song-search', component: SongSearchComponent},
-  // TODO Kathi: Add Routes für Swiping and Matching Screen, or Chatting or other
-  {path: 'song-swipe', component: SongSwipingComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'pers-settings', component: PersSettingsComponent},
+  {path: 'song-list', component: SongListComponent, canActivate: [AuthGuard]},
+  {path: 'song-search', component: SongSearchComponent, canActivate: [AuthGuard]},
+  {path: 'song-swipe', component: SongSwipingComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'pers-settings', component: PersSettingsComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to home
   {path: '**', redirectTo: ''},

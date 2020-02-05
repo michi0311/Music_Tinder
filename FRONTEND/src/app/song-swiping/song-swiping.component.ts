@@ -1,9 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Howl} from 'howler';
 import {SongSwipingService} from './song-swiping.service';
 import {ToastController} from '@ionic/angular';
-import {stringify} from 'querystring';
-import {logger} from 'codelyzer/util/logger';
+import {AuthenticationService} from "../authentification/services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-song-swiping',
@@ -27,13 +27,23 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   public audio: Howl;
   public comment = 'My favourite Song';
   public isPlaying = false;
+  public currentUserName = 'Music Tinder Follower';
 
-  constructor(public songService: SongSwipingService, public toastCtrl: ToastController) {
+  constructor(public songService: SongSwipingService,
+              public toastCtrl: ToastController,
+              public auth: AuthenticationService,
+              private router: Router) {
+    this.currentUserName = this.auth.currentUserValue.name;
   }
 
   // At start - fetch Random User and play his/her song
   ngOnInit(): void {
+    // Info for first Login
+    if (JSON.parse(localStorage.getItem("currentUser")).favoriteSongid == null) {
+      this.openStartInfo()
+    }
     this.getRandomSong();
+
   }
 
   // stop Song when switching Route
@@ -68,11 +78,18 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   }
 
   private getSong() {
+    if(this.songId === null){this.audio = undefined;
+    console.error("Song is undefined");
+    this.ngOnInit()}
+  else{
+  this.audio = new Howl({
+    src: ['' + this.songUrl]
+  });}
     this.songService.getSong(this.songId)
       .subscribe(
         data => {
-          console.log(this.randomSong);
           this.randomSong = data;
+          console.log(this.randomSong);
           this.songUrl = this.randomSong.user.URL;
           this.songName = this.randomSong.user.songName;
           this.songCover = this.randomSong.user.artworkURL;
@@ -82,14 +99,20 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
 
 
           // let the song play
-          this.audio = new Howl({
+          if(this.songUrl.includes("video-ssl")){
+            this.audio = undefined;
+            console.error("Song is a Video");
+            this.ngOnInit()
+          }
+          else{
+            this.audio = new Howl({
             src: ['' + this.songUrl]
-          });
+          });}
 
           // Gottes Gabe
           const self = this;
           // gets invoked, when audio ends
-          this.audio.on('end', function() {
+          this.audio.on('end', function () {
             self.changeButtonPause();
             self.isPlaying = false;
           });
@@ -130,13 +153,13 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   hateSong() {
     this.songService.sethate(this.userId)
       .subscribe(
-      data => {
-        const userHate = data;
-        console.log('User called hateSong');
-      },
-      err => console.error(err),
-      () => console.log('done getting hate')
-    );
+        data => {
+          const userHate = data;
+          console.log('User called hateSong');
+        },
+        err => console.error(err),
+        () => console.log('done getting hate')
+      );
     if (this.isPlaying === false) {
       this.changeButtonPlay();
     }
@@ -151,7 +174,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           const userMatch = data;
           console.log('User called loveSong');
         },
-        err => console.log('love went wrong'),
+        err => console.error(err),
         () => console.log('done getting love')
       );
     if (this.isPlaying === false) {
@@ -210,5 +233,25 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       age--;
     }
     return age;
+  }
+
+  // show Infotext for first Login
+  async openStartInfo() {
+    const toast = await this.toastCtrl.create({
+      // header: 'Hi ' + this.currentUserName! + '!',
+      message: 'Before you start, set your profile song',
+      buttons: [
+        {
+          text: 'Set your Song',
+          role: 'link',
+          handler: () => {
+            this.router.navigate(['/song-search'])
+          }
+        }
+      ],
+      color: 'secondary',
+      position: 'middle',
+    });
+    toast.present();
   }
 }

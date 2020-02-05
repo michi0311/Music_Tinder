@@ -14,10 +14,12 @@ import {MessageUtil} from 'src/app/message-util';
 export class PersSettingsComponent implements OnInit {
   person: User;
 
-  constructor(public service: MusicServiceService, public auth: AuthenticationService, public userServ: UserService) {
+  constructor(
+    public service: MusicServiceService,
+    public auth: AuthenticationService,
+    public userServ: UserService) {
+
     this.person = this.auth.currentUserValue;
-    console.log("this is fperson");
-    console.log(JSON.stringify(this.person));
   }
 
   ngOnInit() {
@@ -28,7 +30,10 @@ export class PersSettingsComponent implements OnInit {
     this.userServ.update(this.person)
       .subscribe(
         data => {
-          console.log(data);
+          console.log(data)
+          if (data['user'].songDescription != null) {
+            this.auth.setSongDescriptionLocaleStorage(data['user'].songDescription);
+          }
           MessageUtil.showMessage('update successful');
         },
         err => console.error(err),
