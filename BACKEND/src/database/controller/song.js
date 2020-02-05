@@ -166,6 +166,7 @@ module.exports = {
         }
     },
 
+    //Backend Method for getting Songs from ITunes
     getAppleSong: async function (req, res) {
         try {
             const term = req.params.term;

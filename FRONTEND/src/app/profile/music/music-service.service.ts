@@ -24,8 +24,11 @@ export class MusicServiceService {
   }
 
   public searchSongs(term: string) {
-    const myCORSHeader = this.getCORSHeader();
-    return this.http.get('http://localhost:3030/api/song/apple/'+ term );
+    //First Try: CORS Header
+    //const myCORSHeader = this.getCORSHeader();
+    return this.http.get('https://itunes.apple.com/search?term=' + term + '&limit=20&media=music')
+    //Second Try: Request via Backend
+    //return this.http.get('http://localhost:3030/api/song/apple/'+ term );
   }
 
   // @ts-ignore
