@@ -231,7 +231,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   // show Infotext for first Login
   async openStartInfo() {
     const toast = await this.toastCtrl.create({
-      // header: 'Hi ' + this.currentUserName! + '!',
+      header: 'Hi ' + this.currentUserName! + '!',
       message: 'Before you start, set your profile song',
       buttons: [
         {
