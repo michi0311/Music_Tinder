@@ -8,7 +8,7 @@
       <img height="70px" class="logo" src="/assets/images/logo.svg" alt="Music Tinder"/>
     </ion-title>
   </ion-toolbar>
-  <ion-menu side="start" id="menu" type="overlay">
+  <ion-menu side="start" id="menu" contentId="my-content" type="overlay">
     <ion-header>
       <ion-toolbar translucent>
         <ion-title>Menu</ion-title>
@@ -55,7 +55,7 @@
 
   </nav>
   <ion-content class="page-content">
-    <router-outlet main></router-outlet>
+    <router-outlet  id="my-content"></router-outlet>
   </ion-content>
 </ion-app>
 
