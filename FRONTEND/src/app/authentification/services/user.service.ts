@@ -7,7 +7,10 @@ import {log} from "util";
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-  constructor(private http: HttpClient, private auth: AuthenticationService) {
+
+  constructor(
+    private http: HttpClient,
+    private auth: AuthenticationService) {
   }
 
   getAll() {

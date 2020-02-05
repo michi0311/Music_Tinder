@@ -2,7 +2,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -17,7 +17,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {SongSwipingComponent} from './song-swiping/song-swiping.component';
 import {SettingsComponent} from './profile/settings/settings.component';
-import { PersSettingsComponent } from './profile/settings/pers-settings/pers-settings.component';
+import {PersSettingsComponent} from './profile/settings/pers-settings/pers-settings.component';
 
 import {LoginComponent} from './authentification/login/login.component';
 import {RegisterComponent} from './authentification/register/register.component';
@@ -25,7 +25,7 @@ import {AlertComponent} from './authentification/alert/alert.component';
 
 import {JwtInterceptor} from './authentification/helpers/jwt.interceptor';
 import {ErrorInterceptor} from "./authentification/helpers/error.interceptor";
-import { UserMatchComponent } from './profile/user-match/user-match.component';
+import {UserMatchComponent} from './profile/user-match/user-match.component';
 
 @NgModule({
   declarations: [

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MusicServiceService} from "../music/music-service.service";
 import {MessageUtil} from "../../message-util";
 
@@ -8,7 +8,6 @@ import {MessageUtil} from "../../message-util";
   styleUrls: ['./user-match.component.css']
 })
 export class UserMatchComponent implements OnInit {
-
   users;
 
   constructor(private musicService: MusicServiceService) {
@@ -31,8 +30,8 @@ export class UserMatchComponent implements OnInit {
         () => console.log('done loading matches')
       );
   }
-  chat(){
+
+  chat() {
     MessageUtil.showMessage("not implemented yet");
   }
-
 }

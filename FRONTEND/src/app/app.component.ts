@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IonMenu} from "@ionic/angular";
 import {AuthenticationService} from "./authentification/services/authentication.service";
 import {User} from "./authentification/model/user";
@@ -16,8 +16,7 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
-  ) {
+    private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -26,9 +25,9 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
-public openMenu() {
+  public openMenu() {
     // @ts-ignore
-  (document.querySelector('#menu') as HTMLIonMenuElement )
+    (document.querySelector('#menu') as HTMLIonMenuElement)
       .open();
   }
 

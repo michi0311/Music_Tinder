@@ -10,7 +10,6 @@
     this.name = name;
     this.email = email;
     this.birthday = birthday;
-    // this.password = password;
   }
 
   public setSong(songId: number) {

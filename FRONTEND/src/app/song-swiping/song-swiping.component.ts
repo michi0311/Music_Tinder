@@ -33,6 +33,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
               public toastCtrl: ToastController,
               public auth: AuthenticationService,
               private router: Router) {
+
     this.currentUserName = this.auth.currentUserValue.name;
   }
 
@@ -78,13 +79,15 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   }
 
   private getSong() {
-    if(this.songId === null){this.audio = undefined;
-    console.error("Song is undefined");
-    this.ngOnInit()}
-  else{
-  this.audio = new Howl({
-    src: ['' + this.songUrl]
-  });}
+    if (this.songId === null) {
+      this.audio = undefined;
+      console.error("Song is undefined");
+      this.ngOnInit()
+    } else {
+      this.audio = new Howl({
+        src: ['' + this.songUrl]
+      });
+    }
     this.songService.getSong(this.songId)
       .subscribe(
         data => {
@@ -99,15 +102,15 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
 
 
           // let the song play
-          if(this.songUrl.includes("video-ssl")){
+          if (this.songUrl.includes("video-ssl")) {
             this.audio = undefined;
             console.error("Song is a Video");
             this.ngOnInit()
-          }
-          else{
+          } else {
             this.audio = new Howl({
-            src: ['' + this.songUrl]
-          });}
+              src: ['' + this.songUrl]
+            });
+          }
 
           // Gottes Gabe
           const self = this;

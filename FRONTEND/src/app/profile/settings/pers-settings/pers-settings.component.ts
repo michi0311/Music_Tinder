@@ -40,5 +40,4 @@ export class PersSettingsComponent implements OnInit {
         () => console.log('done updating')
       );
   }
-
 }

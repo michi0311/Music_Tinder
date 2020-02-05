@@ -13,11 +13,13 @@ import {computeStackId} from '@ionic/angular/dist/directives/navigation/stack-ut
   providedIn: 'root'
 })
 export class MusicServiceService {
-  constructor(private http: HttpClient, private auth: AuthenticationService, private userService: UserService) {
+  constructor(
+    private http: HttpClient,
+    private auth: AuthenticationService,
+    private userService: UserService) {
   }
 
   song;
-
 
   public getSongs() {
     const myHeader = this.getHeader();
@@ -54,6 +56,4 @@ export class MusicServiceService {
     const myHeader = this.getHeader();
     return this.http.get('http://localhost:3030/api/match/user', JSON.parse(myHeader));
   }
-
-
 }

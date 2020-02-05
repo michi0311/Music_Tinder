@@ -2,6 +2,7 @@ export interface ITunesWebApi {
   resultCount: number;
   results?: (ResultsEntity)[] | null;
 }
+
 export interface ResultsEntity {
   wrapperType: string;
   kind: string;

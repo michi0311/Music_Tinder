@@ -2,7 +2,7 @@ import {ToastController} from '@ionic/angular';
 
 export class MessageUtil {
 
-  public static async  showMessage(text: string) {
+  public static async showMessage(text: string) {
     const toastController = new ToastController();
     const toast = await toastController.create({
       message: text,
@@ -10,6 +10,4 @@ export class MessageUtil {
     });
     toast.present();
   }
-
-
 }

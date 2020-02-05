@@ -6,8 +6,7 @@ import {AbstractControl, FormControl, FormGroup} from "@angular/forms";
 })
 export class PasswordValidationService {
 
-  constructor() {
-  }
+  constructor() {}
 
   static areEqual(formGroup: FormGroup) {
     let val;

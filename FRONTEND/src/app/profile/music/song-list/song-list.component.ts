@@ -17,8 +17,9 @@ import {ITunesWebApi} from '../i-tunes-web-api';
 export class SongListComponent implements OnInit {
   public songs;
 
-  constructor(private musicService: MusicServiceService, private route: ActivatedRoute) {
-
+  constructor(
+    private musicService: MusicServiceService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -37,5 +38,4 @@ export class SongListComponent implements OnInit {
         () => console.log('done loading foods')
       );
   }
-
 }
