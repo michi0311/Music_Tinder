@@ -68,7 +68,6 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           this.userId = this.randomUser.user.id;
           this.songId = this.randomUser.user.favoriteSongid;
           this.comment = this.randomUser.user.songDescription;
-          console.log(this.randomUser.user.name);
           this.getSong();
         },
         err => console.error(err)
@@ -80,27 +79,25 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   private getSong() {
     if (this.songId === null) {
       console.log("Song is undefined");
-      console.log(this.songName);
       this.ngOnInit()
-    } else {
-      this.songService.getSong(this.songId)
-        .subscribe(
-          data => {
-            this.randomSong = data;
-            this.songUrl = this.randomSong.user.URL;
-            this.songName = this.randomSong.user.songName;
-            this.songCover = this.randomSong.user.artworkURL;
-            this.songArtist = this.randomSong.user.artistName;
-            this.songGenre = this.randomSong.user.genre;
-            this.album = this.randomSong.user.collectionName;
+    }
+    this.songService.getSong(this.songId)
+      .subscribe(
+        data => {
+          this.randomSong = data;
+          this.songUrl = this.randomSong.user.URL;
+          this.songName = this.randomSong.user.songName;
+          this.songCover = this.randomSong.user.artworkURL;
+          this.songArtist = this.randomSong.user.artistName;
+          this.songGenre = this.randomSong.user.genre;
+          this.album = this.randomSong.user.collectionName;
 
 
-            // let the song play
-            if (this.songUrl.includes("video-ssl")) {
-              console.log("Song is a Video");
-              console.log(this.songName);
-              this.ngOnInit()
-            }
+          // let the song play
+          if (this.songUrl.includes("video-ssl")) {
+            console.log("Song is a Video");
+            this.ngOnInit()
+          }
             this.audio = new Howl({
               src: ['' + this.songUrl]
             });
@@ -118,9 +115,8 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
             this.changeButtonPlay();
             this.isPlaying = true;
 
-          },
-          error => console.log(error));
-    }
+        },
+        error => console.log(error));
   }
 
   // pauses song, when it plays, plays song when it's paused
