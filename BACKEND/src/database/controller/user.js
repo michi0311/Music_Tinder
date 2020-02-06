@@ -28,7 +28,8 @@ module.exports = {
                 password: await hashTool.createHash(req.body.password),
                 birthday: req.body.birthday,
                 songDescription: req.body.songDescription,
-                favoriteSongid: req.body.favoriteSongid || null
+                favoriteSongid: req.body.favoriteSongid || null,
+                isVerified: false
             });
             if (!userCollection) {
                 return res.status(400).send({ error: 'User creation unsuccesfull' })

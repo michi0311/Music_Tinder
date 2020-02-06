@@ -26,7 +26,7 @@ module.exports = {
             //normalerweise find or create aber ich hatte keine Lust TODO: vlt ändern
             const alreadyInDb= await  userMatch.findOne({where:{Userid: userId, Userid2: otherUserId}})
             if (alreadyInDb) {
-                return res.status(400).send({error: "Users have matched already"})
+                return res.status(200).send({error: "Users have matched already"})
             }
             const alreadyMatched = await  userMatch.findOne({where:{Userid: otherUserId, Userid2: userId}})
             if (alreadyMatched) {

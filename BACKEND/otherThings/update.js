@@ -2,9 +2,7 @@ const song = require("../src/database/models/index").Song;
 const request = require("request")
 
 main = async () => {
-
     try {
-        
     const songs = await song.findAll({where: {id: 4}})
 
     let songLength = songs.length;

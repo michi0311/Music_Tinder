@@ -38,6 +38,9 @@ module.exports = (sequelize, DataTypes) => {
                 model: sequelize.models.Song,
                 key: "id"
             }
+        },
+        isVerified: {
+            type: DataTypes.BOOLEAN()
         }
     },{
         timestamps: false,

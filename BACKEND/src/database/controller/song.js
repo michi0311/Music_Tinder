@@ -29,12 +29,13 @@ module.exports = {
             }
 
 
+            //TODO modify artwork url
             const songCollection = await song.create({
                 songName: req.body.songName,
                 artistName: req.body.artistName,
                 collectionName: req.body.collectionName,
                 URL: req.body.URL,
-                artworkURL: req.body.artworkURL,
+                artworkURL: req.body.artworkURL.replace("60x60bb","600x600bb"),
                 iTunesID: req.body.iTunesID,
                 genre: req.body.genre,
                 totalLikes: 0,

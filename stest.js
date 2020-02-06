@@ -7,7 +7,7 @@ document.addEventListener('musickitloaded', () => {
         https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance
       ***/
       const music = MusicKit.configure({
-        developerToken: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjlEUjMyRDRZMzYifQ.eyJpc3MiOiJZQ1Q4NFU0NEIzIiwiZXhwIjoxNTc4Mjk3MDUwLCJpYXQiOjE1NzgyNTM4NTB9.2J7cLHQLcZmsKDp9OUEus3v_1AOcW3FAirRGB85zCboVP1NtEOCiqI57nO0koOcjdm9C7Zj_0k35fAO5khmKmg",
+        developerToken: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjlEUjMyRDRZMzYifQ.eyJpc3MiOiJZQ1Q4NFU0NEIzIiwiZXhwIjoxNTc5MTQ1OTkyLCJpYXQiOjE1NzkxMDI3OTJ9.8pAT0nufWS-fvKlEvbZrTw7b17r4wjpZ0bMdVMHDlNYAoS9N0gu8IVT_gA5LNZ3BuQSS3ZyAFT83WLjZVmY-9w",
         app: {
           name: 'AppleMusicKitExample',
           build: '1978.4.1'
