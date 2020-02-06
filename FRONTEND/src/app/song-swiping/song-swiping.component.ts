@@ -4,6 +4,7 @@ import {SongSwipingService} from './song-swiping.service';
 import {ToastController} from '@ionic/angular';
 import {AuthenticationService} from "../authentification/services/authentication.service";
 import {Router} from "@angular/router";
+import anime from 'animejs';
 
 @Component({
   selector: 'app-song-swiping',
@@ -82,44 +83,45 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       console.log(this.songName);
       this.ngOnInit()
     } else {
-    this.songService.getSong(this.songId)
-      .subscribe(
-        data => {
-          this.randomSong = data;
-          this.songUrl = this.randomSong.user.URL;
-          this.songName = this.randomSong.user.songName;
-          this.songCover = this.randomSong.user.artworkURL;
-          this.songArtist = this.randomSong.user.artistName;
-          this.songGenre = this.randomSong.user.genre;
-          this.album = this.randomSong.user.collectionName;
+      this.songService.getSong(this.songId)
+        .subscribe(
+          data => {
+            this.randomSong = data;
+            this.songUrl = this.randomSong.user.URL;
+            this.songName = this.randomSong.user.songName;
+            this.songCover = this.randomSong.user.artworkURL;
+            this.songArtist = this.randomSong.user.artistName;
+            this.songGenre = this.randomSong.user.genre;
+            this.album = this.randomSong.user.collectionName;
 
 
-          // let the song play
-          if (this.songUrl.includes("video-ssl")) {
-            console.log("Song is a Video");
-            console.log(this.songName);
-            this.ngOnInit()
-          }
+            // let the song play
+            if (this.songUrl.includes("video-ssl")) {
+              console.log("Song is a Video");
+              console.log(this.songName);
+              this.ngOnInit()
+            }
             this.audio = new Howl({
               src: ['' + this.songUrl]
             });
 
 
-          // Gottes Gabe
-          const self = this;
-          // gets invoked, when audio ends
-          this.audio.on('end', function () {
-            self.changeButtonPause();
-            self.isPlaying = false;
-          });
+            // Gottes Gabe
+            const self = this;
+            // gets invoked, when audio ends
+            this.audio.on('end', function () {
+              self.changeButtonPause();
+              self.isPlaying = false;
+            });
 
-          this.audio.play();
-          this.changeButtonPlay();
-          this.isPlaying = true;
+            this.audio.play();
+            this.changeButtonPlay();
+            this.isPlaying = true;
 
-        },
-        error => console.log(error));
-  }}
+          },
+          error => console.log(error));
+    }
+  }
 
   // pauses song, when it plays, plays song when it's paused
   pausePlaySong(): void {
@@ -145,6 +147,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
 
   // Switching to next Song - ngOnInit-Function gets called
   hateSong() {
+    this.hateAnimate();
     this.songService.sethate(this.userId)
       .subscribe(
         data => {
@@ -161,6 +164,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
   }
 
   loveSong() {
+    this.loveAnimate();
     this.songService.setlove(this.userId)
       .subscribe(
         data => {
@@ -201,7 +205,7 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
           }
         }
       ],
-      color: 'primary',
+      color: 'secondary',
       position: 'middle',
 
     });
@@ -245,5 +249,35 @@ export class SongSwipingComponent implements OnInit, OnDestroy {
       position: 'middle',
     });
     toast.present();
+  }
+
+  loveAnimate() {
+    anime({
+      targets: '.animate-me-love',
+      opacity: [
+        {value: [0, 1], duration: 1000},
+        {value: [1, 0], duration: 1000}
+      ],
+      scale: [
+        {value: [2, 5], transition: 'linear', duration: 2000},
+      ],
+      rotate: '1turn',
+      duration: 4000,
+    })
+  }
+
+  hateAnimate() {
+    anime({
+      targets: '.animate-me-hate',
+      opacity: [
+        {value: [0, 1], duration: 1000},
+        {value: [1, 0], duration: 1000}
+      ],
+      scale: [
+        {value: [2, 5], transition: 'linear', duration: 2000},
+      ],
+      rotate: '1turn',
+      duration: 4000,
+    })
   }
 }

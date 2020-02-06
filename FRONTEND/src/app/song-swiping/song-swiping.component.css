@@ -28,3 +28,21 @@
 ion-card-title {
   --color: #091a21;
 }
+
+.animate-me-love {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 150px;
+  color: #1dddff;
+  opacity: 0;
+}
+
+.animate-me-hate {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 150px;
+  color: #d02fad;
+  opacity: 0;
+}
