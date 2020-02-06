@@ -24,16 +24,12 @@ export class MusicServiceService {
   }
 
   public searchSongs(term: string) {
-    //First Try: CORS Header
-    //const myCORSHeader = this.getCORSHeader();
     return this.http.get('https://itunes.apple.com/search?term=' + term + '&limit=20&media=music')
-    //Second Try: Request via Backend
-    //return this.http.get('http://localhost:3030/api/song/apple/'+ term );
   }
 
   // @ts-ignore
   public addSong(song: ResultsEntity) {
-    const songExport = new Song(1, song.trackName, song.artistName, song.collectionName, song.previewUrl, song.artworkUrl60, song.trackId.toString(), song.primaryGenreName, 0, 0);
+    const songExport = new Song(1, song.trackName, song.artistName, song.collectionName, song.previewUrl, song.artworkUrl100, song.trackId.toString(), song.primaryGenreName, 0, 0);
     return this.http.post('http://localhost:3030/api/song/', songExport, {});
   }
 
@@ -47,11 +43,6 @@ export class MusicServiceService {
   private getHeader() {
     const token = this.auth.getToken();
     return `{"headers" :  {"Authorization":"Bearer ${token}"}}`;
-  }
-
-  private getCORSHeader() {
-    const CORS = '"Access-Control-Allow-Origin" : "https://itunes.apple.com"';
-    return `{"headers" :  {${CORS}}}`;
   }
 
   public getMatches() {

@@ -55,13 +55,18 @@ export class LoginComponent implements OnInit {
     }
 
     this.authenticationService.login(this.f.email.value, this.f.password.value)
-          .pipe(first())
-          .subscribe(
-            data => {
-              this.router.navigate([this.returnUrl]);
-            },
-            error => {
-              this.alertService.error('Email or Password is wrong!');
-            });
-      }
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate(['' + this.returnUrl]).then(() => {
+            window.location.reload();
+          }, err => {
+            console.log(err) // when there's an error
+          });
+
+        },
+        error => {
+          this.alertService.error('Email or Password is wrong!');
+        });
+  }
 }
