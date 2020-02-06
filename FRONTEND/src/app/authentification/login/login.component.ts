@@ -12,7 +12,6 @@ import {AuthenticationService} from '../services/authentication.service';
 })
 export class LoginComponent implements OnInit {
   login_validations_form: FormGroup;
-  loading = false;
   submitted = false;
   returnUrl: string;
 
@@ -55,16 +54,14 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
     this.authenticationService.login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
-  }
+          .pipe(first())
+          .subscribe(
+            data => {
+              this.router.navigate([this.returnUrl]);
+            },
+            error => {
+              this.alertService.error('Email or Password is wrong!');
+            });
+      }
 }

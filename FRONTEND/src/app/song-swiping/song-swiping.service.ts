@@ -42,4 +42,8 @@ export class SongSwipingService {
     let token = this.auth.getToken();
     return `{"headers" :  {"Authorization":"Bearer ${token}"}}`;
   }
+
+  public animateLove(){
+
+  }
 }

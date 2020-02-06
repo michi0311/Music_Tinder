@@ -1,5 +1,4 @@
-<ion-searchbar #search (keyup)="searchSongs(search.value)" ng-model="searchText"
-               placeholder="enter search term here"></ion-searchbar>
+<ion-searchbar #search (keyup.enter)="searchSongs(search.value)"  color="light"></ion-searchbar>
 
 
 <ion-list *ngIf="results != undefined">
@@ -12,6 +11,6 @@
       <h3>{{result.artistName}}</h3>
       <p>{{result.collectionName}}</p>
     </ion-label>
-    <ion-button (click)="addSong(result)">set song</ion-button>
+    <ion-button (click)="addSong(result)">Set song</ion-button>
   </ion-item>
 </ion-list>
