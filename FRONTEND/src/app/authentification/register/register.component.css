@@ -1,35 +1,28 @@
-.sign-up-title{
+.sign-up-title {
   color: white;
   margin-bottom: 80px;
   font-size: xx-large;
 }
-/*.error-message{*/
-/*  background-color: white;*/
-/*}*/
 
-.validation-errors{
+.validation-errors {
   color: white;
 }
-
-/*.ion-activatable{*/
-/*  background: white;*/
-/*}*/
 
 ion-content {
   --background: linear-gradient(#1f8698, #0c2c34);
   text-align: center !important;
 }
 
-.logo{
+.logo {
   margin-bottom: 5%;
   margin-top: 5%;
 }
 
 ion-item {
-  --border-radius:50px;
-  --inner-padding-start:20px;
-  --inner-padding-end:20px;
-  --inner-padding-top:0px;
+  --border-radius: 50px;
+  --inner-padding-start: 20px;
+  --inner-padding-end: 20px;
+  --inner-padding-top: 0px;
   --padding-bottom: 0px;
   --padding-top: 0px;
   margin-top: 20px;
@@ -42,12 +35,12 @@ ion-item {
   --padding-top: 26px;
 }
 
-.sign-note{
-  margin-top:20%;
+.sign-note {
+  margin-top: 20%;
   color: white;
 }
 
-.sign-in-button{
+.sign-in-button {
   --padding-bottom: 22px;
   --padding-top: 22px;
   --border-color: #10efe6;
@@ -55,14 +48,14 @@ ion-item {
   margin-bottom: 10px;
 }
 
-ion-input{
+ion-input {
   --padding-top: -50px !important;
   --padding-bottom: -50px !important;
   --padding-start: 50px;
   font-size: x-large;
 }
 
-ion-card{
+ion-card {
   box-shadow: none;
   max-width: 800px;
 }

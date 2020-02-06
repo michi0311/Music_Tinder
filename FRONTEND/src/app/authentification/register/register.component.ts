@@ -7,7 +7,6 @@ import {AlertService} from '../services/alert.service';
 import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../services/authentication.service';
 import {PasswordValidationService} from "../services/passwordValidation.service";
-import {User} from "../model/user";
 
 @Component({
   templateUrl: 'register.component.html',

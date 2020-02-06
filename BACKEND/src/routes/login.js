@@ -24,7 +24,7 @@ router.post("/", async function (req, res, next) {
       console.log(e);
       return res.status(500).send(e)
     }
-    
+
     if (!logUser) {
       return res.status(401).send({ error: "No such User found" });
     }
@@ -44,7 +44,8 @@ router.post("/", async function (req, res, next) {
         name: logUser.name,
         email: logUser.email,
         birthday: logUser.birthday,
-        songDescription: logUser.songDescription
+        songDescription: logUser.songDescription,
+        favoriteSongid: logUser.favoriteSongid
       });
     } else {
       return res.status(401).json({ error: "Password is incorrect" });

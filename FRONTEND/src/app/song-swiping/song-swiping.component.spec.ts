@@ -1,6 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SongSwipingComponent } from './song-swiping.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {SongSwipingComponent} from './song-swiping.component';
 
 describe('SongSwipingComponent', () => {
   let component: SongSwipingComponent;
@@ -8,9 +7,9 @@ describe('SongSwipingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SongSwipingComponent ]
+      declarations: [SongSwipingComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

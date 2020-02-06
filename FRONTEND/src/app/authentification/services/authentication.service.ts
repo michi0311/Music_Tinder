@@ -2,7 +2,6 @@
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-
 import {User} from '../model/user';
 
 @Injectable({providedIn: 'root'})
@@ -18,15 +17,16 @@ export class AuthenticationService {
   login(email, password) {
     return this.http.post<any>('http://localhost:3030/api/login', {email, password})
       .pipe(map((user: User) => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+        if (user && user.token) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+        }
         return user;
       }));
   }
 
   public get currentUserValue(): User {
-    //const temp = this.currentUserSubject.value;
     return this.currentUserSubject.value;
   }
 
@@ -42,5 +42,19 @@ export class AuthenticationService {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+  }
+
+  setFavoriteSongidLocaleStorage(songid) {
+    var user = JSON.parse(localStorage.getItem("currentUser"));
+    user.favoriteSongid = songid;
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    this.currentUserSubject.next(user)
+  }
+
+  setSongDescriptionLocaleStorage(descr) {
+    var user = JSON.parse(localStorage.getItem("currentUser"));
+    user.songDescription = descr;
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    this.currentUserSubject.next(user)
   }
 }

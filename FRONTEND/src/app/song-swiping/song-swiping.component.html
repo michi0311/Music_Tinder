@@ -1,25 +1,28 @@
+<ion-card class="music-card">
+  <div class="animate-me-love">
+    <ion-icon size="large" name="heart"></ion-icon>
+  </div>
+  <div class="animate-me-hate">
+    <ion-icon size="large" name="close-circle"></ion-icon>
+  </div>
+  <ion-img alt="Cover" [src]="songCover"></ion-img>
+  <ion-card-header>
+    <ion-card-subtitle>{{songArtist}}</ion-card-subtitle>
+    <ion-card-title>{{songName}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content id="content-card">
+    {{comment}}
+  </ion-card-content>
 
-  <ion-card class="music-card">
-    <img alt="Cover"  [src]="songCover"/>
-    <!--        You can you use the ion-img -->
-<!--            <ion-img [src]="item.src"></ion-img>-->
-    <ion-card-header>
-      <ion-card-subtitle>{{songArtist}}</ion-card-subtitle>
-      <ion-card-title>{{songName}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content id="content-card">
-        {{comment}}
-    </ion-card-content>
-
-    <ion-chip class="ion-margin-start">
-      <ion-avatar>
-        <img alt="Gender" src="/assets/images/f.svg">
-        <!--        You can you use the ion-img -->
-        <!--        <ion-img [src]="item.src"></ion-img>-->
-      </ion-avatar>
-      <ion-label>{{userName}}, {{userAge}}</ion-label>
-    </ion-chip>
-  </ion-card>
+  <ion-chip class="ion-margin-start">
+    <ion-avatar>
+      <img alt="Gender" src="/assets/images/f.svg">
+      <!--        You can you use the ion-img -->
+      <!--        <ion-img [src]="item.src"></ion-img>-->
+    </ion-avatar>
+    <ion-label>{{userName}}, {{userAge}}</ion-label>
+  </ion-chip>
+</ion-card>
 
 <ion-tabs>
   <ion-tab-bar slot="bottom" class="bottom-bar">
@@ -47,10 +50,13 @@
       <ion-icon size="large" name="refresh"></ion-icon>
       <ion-label>Repeat</ion-label>
     </ion-tab-button>
-
   </ion-tab-bar>
 </ion-tabs>
 
+<!--<ion-content padding>-->
+<!--  <ion-button expand="block" (click)="callAnime()">animejs</ion-button>-->
+<!--  <div class="animate-me"></div>-->
 
+<!--</ion-content>-->
 
 

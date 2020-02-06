@@ -1,4 +1,4 @@
-import { MessageUtil } from './message-util';
+import {MessageUtil} from './message-util';
 
 describe('MessageUtil', () => {
   it('should create an instance', () => {

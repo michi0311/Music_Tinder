@@ -3,8 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./authentification/login/login.component";
 import {RegisterComponent} from "./authentification/register/register.component";
 import {AuthGuard} from "./authentification/helpers/auth.guard";
-
-// Import all Components, which should get routed
 import {SongListComponent} from './profile/music/song-list/song-list.component';
 import {SongSearchComponent} from './profile/music/song-search/song-search.component';
 import {SongSwipingComponent} from './song-swiping/song-swiping.component';
@@ -14,19 +12,15 @@ import {UserMatchComponent} from './profile/user-match/user-match.component';
 
 
 const routes: Routes = [
-  // TODO Albin: Redirecting Default to Login, when not logged in - else Startscreen or Matching Screen
   {path: '', component: SongSwipingComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'matches', component: UserMatchComponent},
-
-  // { path: '', redirectTo: '/song-list', pathMatch: 'full' },
-  {path: 'song-list', component: SongListComponent},
-  {path: 'song-search', component: SongSearchComponent},
-  // TODO Kathi: Add Routes für Swiping and Matching Screen, or Chatting or other
-  {path: 'song-swipe', component: SongSwipingComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'pers-settings', component: PersSettingsComponent},
+  {path: 'matches', component: UserMatchComponent, canActivate: [AuthGuard]},
+  {path: 'song-list', component: SongListComponent, canActivate: [AuthGuard]},
+  {path: 'song-search', component: SongSearchComponent, canActivate: [AuthGuard]},
+  {path: 'song-swipe', component: SongSwipingComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'pers-settings', component: PersSettingsComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to home
   {path: '**', redirectTo: ''},
